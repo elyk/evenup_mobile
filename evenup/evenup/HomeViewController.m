@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(toggleLeftNav:)];
     self.view.backgroundColor = [UIColor whiteColor];
     eventsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, 300) style:UITableViewStylePlain];
     eventsTable.delegate = self;
@@ -43,6 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -- Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IIViewDeckController.h"
 @interface BaseViewController : UIViewController
 
 @end

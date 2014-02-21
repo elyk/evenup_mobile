@@ -23,12 +23,14 @@
     HomeViewController *homeVc = [[HomeViewController alloc] init];
     SideViewController *sideVc = [[SideViewController alloc] init];
     
-    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:homeVc leftViewController:sideVc];
+
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:deckController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeVc];
     
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:navController leftViewController:sideVc];
+    deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     
-    self.window.rootViewController = navController;
+    self.window.rootViewController = deckController;
     
     return YES;
 }

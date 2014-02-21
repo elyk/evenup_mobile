@@ -29,6 +29,11 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)toggleLeftNav:(id)sender
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
