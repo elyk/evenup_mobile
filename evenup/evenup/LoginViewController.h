@@ -8,6 +8,20 @@
 
 #import "BaseViewController.h"
 
+@protocol LoginViewControllerDelegate;
+
+
+
 @interface LoginViewController : BaseViewController
+{
+    
+}
+@property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
+@end
+// 3. Definition of the delegate's interface
+@protocol LoginViewControllerDelegate <NSObject>
+
+- (void)LoginViewController:(LoginViewController *)viewController
+             didLogUserIn:(BOOL)value;
 
 @end

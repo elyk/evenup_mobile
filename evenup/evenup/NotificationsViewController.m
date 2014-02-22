@@ -8,20 +8,15 @@
 
 #import "NotificationsViewController.h"
 
-@interface NotificationsViewController ()
+@interface NotificationsViewController () <UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView *notificationsTable;
+}
 
 @end
 
 @implementation NotificationsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -29,12 +24,36 @@
 	// Do any additional setup after loading the view.
     self.title = @"Notifications";
     [self setLeftMenuButton];
+    
+    notificationsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    notificationsTable.delegate = self;
+    notificationsTable.dataSource = self;
+    
+    [self.view addSubview:notificationsTable];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -- Tableview datasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] init];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"Notification %i", indexPath.row];
+    return cell;
 }
 
 @end

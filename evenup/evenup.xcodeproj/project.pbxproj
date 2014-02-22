@@ -46,6 +46,7 @@
 		27EB2B0018B8435800C2D851 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AFF18B8435800C2D851 /* NotificationsViewController.m */; };
 		27EB2B0318B8454300C2D851 /* PastEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0218B8454300C2D851 /* PastEventsViewController.m */; };
 		27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0518B846F100C2D851 /* BaseNavigationController.m */; };
+		27EB2B0918B84CA800C2D851 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0818B84CA800C2D851 /* BaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,8 @@
 		27EB2B0218B8454300C2D851 /* PastEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastEventsViewController.m; sourceTree = "<group>"; };
 		27EB2B0418B846F100C2D851 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		27EB2B0518B846F100C2D851 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		27EB2B0718B84CA800C2D851 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		27EB2B0818B84CA800C2D851 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				27EB2AB418B8166600C2D851 /* BaseViewController.m */,
 				27EB2B0418B846F100C2D851 /* BaseNavigationController.h */,
 				27EB2B0518B846F100C2D851 /* BaseNavigationController.m */,
+				27EB2B0718B84CA800C2D851 /* BaseCell.h */,
+				27EB2B0818B84CA800C2D851 /* BaseCell.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				27EB2ACE18B81E9B00C2D851 /* LoginViewController.m in Sources */,
 				27EB2AF118B835E900C2D851 /* Server.m in Sources */,
 				27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */,
+				27EB2B0918B84CA800C2D851 /* BaseCell.m in Sources */,
 				27EB2AC618B8172F00C2D851 /* SideViewController.m in Sources */,
 				27EB2A8E18B8160200C2D851 /* main.m in Sources */,
 				27EB2AB818B8167F00C2D851 /* HomeViewController.m in Sources */,

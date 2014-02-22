@@ -11,8 +11,15 @@
 #import "HomeViewController.h"
 #import "SideViewController.h"
 #import "BaseNavigationController.h"
-@implementation AppDelegate
+#import "LoginViewController.h"
 
+@interface AppDelegate() <LoginViewControllerDelegate>
+{
+    
+}
+@end
+
+@implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -21,10 +28,24 @@
     [self.window makeKeyAndVisible];
     
     
+    [self bringUserToLogin];
+    
+    return YES;
+}
+
+-(void)bringUserToLogin
+{
+    LoginViewController *loginVc = [[LoginViewController alloc] init];
+    loginVc.delegate = self;
+    self.window.rootViewController = loginVc;
+}
+
+-(void)bringUserToHome
+{
     HomeViewController *homeVc = [[HomeViewController alloc] init];
     SideViewController *sideVc = [[SideViewController alloc] init];
     
-
+    
     
     BaseNavigationController *navController = [[BaseNavigationController alloc] initWithRootViewController:homeVc];
     
@@ -32,8 +53,14 @@
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     
     self.window.rootViewController = deckController;
-    
-    return YES;
+
+}
+
+#pragma mark - login vc delegate
+- (void)LoginViewController:(LoginViewController *)viewController
+               didLogUserIn:(BOOL)value
+{
+    [self bringUserToHome];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
