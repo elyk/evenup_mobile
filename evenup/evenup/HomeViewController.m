@@ -15,6 +15,9 @@
     UITableView *eventsTable;
     NSMutableArray *eventsArray;
     
+    UILabel *amountOwedValueLabel;
+    UILabel *amountDueValueLabel;
+    
 }
 @end
 
@@ -39,6 +42,41 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewEvent)];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    UILabel *amountOwedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width/2, 15)];
+    amountOwedLabel.text = @"AMOUNT OWED";
+    amountOwedLabel.textAlignment = NSTextAlignmentCenter;
+    amountOwedLabel.textColor = [UIColor lightGrayColor];
+    amountOwedLabel.font = [UIFont boldSystemFontOfSize:9.0f];
+    [self.view addSubview:amountOwedLabel];
+    
+    
+    UILabel *amountDueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 10, self.view.frame.size.width/2, 15)];
+    amountDueLabel.text = @"AMOUNT DUE";
+    amountDueLabel.textAlignment = NSTextAlignmentCenter;
+    amountDueLabel.textColor = [UIColor lightGrayColor];
+    amountDueLabel.font = [UIFont boldSystemFontOfSize:9.0f];
+    [self.view addSubview:amountDueLabel];
+    
+    
+    amountOwedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width/2, 30)];
+    amountOwedValueLabel.text = @"$0";
+    amountOwedValueLabel.textColor = [UIColor greenColor];
+    amountOwedValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
+    amountOwedValueLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:amountOwedValueLabel];
+    
+    amountDueValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 50, self.view.frame.size.width/2, 30)];
+    amountDueValueLabel.text = @"$0";
+    amountDueValueLabel.textColor = [UIColor redColor];
+    amountDueValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
+    amountDueValueLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:amountDueValueLabel];
+    
+    
+    
+    
     eventsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, 300) style:UITableViewStylePlain];
     eventsTable.delegate = self;
     eventsTable.dataSource = self;
