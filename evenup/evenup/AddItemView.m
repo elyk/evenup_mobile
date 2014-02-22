@@ -46,6 +46,7 @@
         [self addSubview:addButton];
         
         
+        
     }
     return self;
 }
@@ -53,8 +54,11 @@
 -(void)adjustFrame:(CGRect)frame
 {
     self.frame = frame;
-    self.formTable.frame = CGRectMake(0, 0, frame.size.width, frame.size.height-100);
+    self.formTable.frame = CGRectMake(0, 0, frame.size.width, frame.size.height-150);
     addButton.frame = CGRectMake(20, self.formTable.frame.size.height+self.formTable.frame.origin.y+30, frame.size.width-40, 20);
+
+//    letting parent view know we are displayed
+    self.is_displayed = YES;
 }
 
 -(void)didSelectAdd

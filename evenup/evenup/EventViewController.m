@@ -9,7 +9,7 @@
 #define EVENT_TOGGLE_MEMBERS 1
 
 #import "EventViewController.h"
-#import "AddItemView.h"
+
 
 @interface EventViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -62,6 +62,14 @@
     eventTable.delegate = self;
     
     [self.view addSubview:eventTable];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(viewTouched)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,16 +102,39 @@
 
 -(void)addItemToEvent
 {
-    AddItemView *addItemView = [[AddItemView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 350)];
-    CGRect currentFrame = addItemView.frame;
-    [self.view addSubview:addItemView];
+    self.addItemView = [[AddItemView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 350)];
+    [self showAddView:self.addItemView];
+    
+}
+
+-(void)showAddView:(AddItemView *)addView
+{
+    CGRect currentFrame = addView.frame;
+    [self.view addSubview:addView];
     [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
         [self addGrayBGView];
-        [self.view bringSubviewToFront:addItemView];
-        [addItemView adjustFrame:CGRectMake(currentFrame.origin.x, 10, currentFrame.size.width, currentFrame.size.height)];
+        [self.view bringSubviewToFront:addView];
+        [addView adjustFrame:CGRectMake(currentFrame.origin.x, 10, currentFrame.size.width, currentFrame.size.height)];
     } completion:^(BOOL finished) {
         NSLog(@"animation complete");
     }];
+}
+
+-(void)hideAndRemoveAddView:(AddItemView *)addView
+{
+    CGRect currentFrame = addView.frame;
+    [self.view addSubview:addView];
+    [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [addView adjustFrame:CGRectMake(currentFrame.origin.x, self.view.frame.size.height, currentFrame.size.width, currentFrame.size.height)];
+        [self removeDarkBGView];
+        
+    } completion:^(BOOL finished) {
+        NSLog(@"animation complete");
+        [addView removeFromSuperview];
+        self.addItemView = nil;
+    }];
+    
+    
     
 }
 
@@ -124,6 +155,15 @@
 {
     [darkBGView removeFromSuperview];
     darkBGView = nil;
+}
+
+#pragma mark -- VIEW TOUCHED
+-(void)viewTouched {
+    [self.view resignFirstResponder];
+    
+    if (self.addItemView.is_displayed) {
+        [self hideAndRemoveAddView:self.addItemView];
+    }
 }
 
 #pragma mark -- Tableview delegate

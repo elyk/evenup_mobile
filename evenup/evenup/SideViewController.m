@@ -62,6 +62,7 @@
     navTable.delegate = self;
     navTable.dataSource = self;
     navTable.backgroundColor = [UIColor clearColor];
+    navTable.separatorColor = [UIColor whiteColor];
     
     [self.view addSubview:navTable];
     

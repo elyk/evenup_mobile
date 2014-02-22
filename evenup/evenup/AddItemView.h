@@ -14,5 +14,6 @@
 }
 
 @property (nonatomic, strong) UITableView *formTable;
+@property BOOL is_displayed;
 -(void)adjustFrame:(CGRect)frame;
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "AddItemView.h"
 @interface EventViewController : BaseViewController
-
+{
+    
+}
+@property (nonatomic, strong) AddItemView *addItemView;
 @end
