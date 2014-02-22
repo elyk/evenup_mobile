@@ -10,6 +10,8 @@
 
 #import "EventViewController.h"
 #import "EventAdminViewController.h"
+#import "EventItemViewController.h"
+#import "EventMemberViewController.h"
 
 @interface EventViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -24,6 +26,7 @@
     
     UIView *darkBGView;
     
+    UITapGestureRecognizer *tapGesture;
 
 }
 @end
@@ -66,11 +69,6 @@
     
     [self.view addSubview:eventTable];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(viewTouched)];
-    
-    [self.view addGestureRecognizer:tap];
     
     eventItemsArray = [NSArray arrayWithObjects:@"Item 1", @"Item 2", nil];
     eventMembersArray = [NSArray arrayWithObjects:@"Member 1", @"Member 2", nil];
@@ -131,6 +129,14 @@
         [addView adjustFrame:CGRectMake(currentFrame.origin.x, 10, currentFrame.size.width, currentFrame.size.height)];
     } completion:^(BOOL finished) {
         NSLog(@"animation complete");
+        
+        tapGesture = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(viewTouched)];
+        
+        [self.view addGestureRecognizer:tapGesture];
+        
+        
     }];
 }
 
@@ -146,6 +152,8 @@
         NSLog(@"animation complete");
         [addView removeFromSuperview];
         self.addItemView = nil;
+        [self.view removeGestureRecognizer:tapGesture];
+        tapGesture = nil;
     }];
     
     
@@ -180,7 +188,7 @@
     }
 }
 
-#pragma mark -- Tableview delegate
+#pragma mark -- Tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
@@ -212,6 +220,29 @@
     return cell;
 }
 
+
+#pragma mark -- Tableview delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 75;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    TODO -- check for indexpath
+    NSLog(@"here here");
+    BaseViewController *pushedVc = nil;
+    if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
+        pushedVc = [[EventItemViewController alloc] init];
+    } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
+        pushedVc = [[EventMemberViewController alloc] init];
+    }
+    
+    NSLog(@"EHEH");
+    
+    [self.navigationController pushViewController:pushedVc animated:YES];
+    
+}
 
 
 @end
