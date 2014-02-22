@@ -110,6 +110,7 @@
 		27EB2C9018B890D200C2D851 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2C5718B890D100C2D851 /* README.md */; };
 		27EB2C9B18B91E1300C2D851 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9A18B91E1300C2D851 /* Utils.m */; };
 		27EB2C9E18B91EE800C2D851 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9D18B91EE800C2D851 /* Settings.m */; };
+		27EB2CA218B9391C00C2D851 /* MainEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2CA118B9391C00C2D851 /* MainEventCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,8 @@
 		27EB2C9A18B91E1300C2D851 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		27EB2C9C18B91EE800C2D851 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		27EB2C9D18B91EE800C2D851 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		27EB2CA018B9391C00C2D851 /* MainEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEventCell.h; sourceTree = "<group>"; };
+		27EB2CA118B9391C00C2D851 /* MainEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEventCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +422,7 @@
 		27EB2AB118B8164C00C2D851 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2C9F18B938FE00C2D851 /* Cells */,
 				27EB2AB618B8167F00C2D851 /* HomeViewController.h */,
 				27EB2AB718B8167F00C2D851 /* HomeViewController.m */,
 				27EB2AC418B8172F00C2D851 /* SideViewController.h */,
@@ -764,6 +768,15 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		27EB2C9F18B938FE00C2D851 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2CA018B9391C00C2D851 /* MainEventCell.h */,
+				27EB2CA118B9391C00C2D851 /* MainEventCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -901,6 +914,7 @@
 				27EB2C6218B890D200C2D851 /* PKCardExpiry.m in Sources */,
 				27EB2C6118B890D200C2D851 /* PKCardCVC.m in Sources */,
 				27EB2C5918B890D100C2D851 /* STPToken.m in Sources */,
+				27EB2CA218B9391C00C2D851 /* MainEventCell.m in Sources */,
 				27EB2AB518B8166600C2D851 /* BaseViewController.m in Sources */,
 				27EB2AC318B8171B00C2D851 /* IIWrapController.m in Sources */,
 				27EB2B0E18B863C400C2D851 /* AddItemView.m in Sources */,

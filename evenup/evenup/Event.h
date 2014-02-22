@@ -14,6 +14,9 @@
 }
 
 @property (nonatomic, strong) NSString *title;
-
+@property (nonatomic, strong) NSString *membersCount;
+@property (nonatomic, strong) NSString *eventDate;
+@property (nonatomic, strong) NSString *amountOwed;
+@property (nonatomic, strong) NSString *status;
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 @end

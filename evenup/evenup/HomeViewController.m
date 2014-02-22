@@ -10,6 +10,7 @@
 #import "AddEventViewController.h"
 #import "EventViewController.h"
 #import "Event.h"
+#import "MainEventCell.h"
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *eventsTable;
@@ -44,6 +45,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setLeftMenuButton];
     
+    
     UILabel *amountOwedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width/2, 15)];
     amountOwedLabel.text = @"AMOUNT OWED";
     amountOwedLabel.textAlignment = NSTextAlignmentCenter;
@@ -75,9 +77,15 @@
     [self.view addSubview:amountDueValueLabel];
     
     
+    UILabel *openEventsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, self.view.frame.size.width, 20)];
+    openEventsLabel.text = @"OPEN EVENTS";
+    openEventsLabel.textAlignment = NSTextAlignmentCenter;
+    openEventsLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+    openEventsLabel.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:openEventsLabel];
     
     
-    eventsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, 300) style:UITableViewStylePlain];
+    eventsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];
     eventsTable.delegate = self;
     eventsTable.dataSource = self;
     [self.view addSubview:eventsTable];
@@ -88,7 +96,10 @@
 
 -(void)loadEvents
 {
-    eventsArray = [NSMutableArray arrayWithArray:@[@"Event 1", @"Event 2", @"Event 3", @"Event 4"]];
+    
+    NSDictionary *eventDict = [[NSDictionary alloc] initWithObjects:@[@"Tahoe Trip", @"12", @"Tuesday", @"20", @"OPEN"] forKeys:@[@"title", @"members_count", @"event_date", @"amount_owed", @"status"]];
+    Event *event1 = [[Event alloc] initWithDictionary:eventDict];
+    eventsArray = [NSMutableArray arrayWithArray:@[event1]];
     [eventsTable reloadData];
 }
 
@@ -109,20 +120,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MainEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
+        cell = [[MainEventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    
     }
     
-//    TODO -- model event and bring back
-    NSString *eventTitle = [eventsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = eventTitle;
+    Event *event = [eventsArray objectAtIndex:indexPath.row];
+    [cell setEvent:event];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 85;
 }
 
 
@@ -130,6 +141,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    Event *event = [[Event alloc] initWithDictionary:<#(NSDictionary *)#>]
     EventViewController *eventVc = [[EventViewController alloc] init];
     [self.navigationController pushViewController:eventVc animated:YES];

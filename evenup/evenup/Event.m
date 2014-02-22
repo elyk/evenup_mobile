@@ -16,6 +16,10 @@
     self = [super init];
     if (self) {
         self.title = dictionary[@"title"];
+        self.membersCount = dictionary[@"members_count"];
+        self.eventDate = dictionary[@"event_date"];
+        self.amountOwed = dictionary[@"amount_owed"];
+        self.status = dictionary[@"status"];
     }
     
     return self;
