@@ -6,7 +6,24 @@
 //  Copyright (c) 2014 Kyle Connors. All rights reserved.
 //
 
+#define HOME_CELL 0
+#define PROFILE_CELL 1
+#define PAYMENT_CELL 2
+#define TRASACTIONS_CELL 3
+#define NOTIFICATONS_CELL 4
+#define PAST_EVENTS_CELL 5
+
+
 #import "SideViewController.h"
+#import "BaseNavigationController.h"
+
+#import "HomeViewController.h"
+#import "ProfileViewController.h"
+#import "PaymentViewController.h"
+#import "TransactionsViewController.h"
+#import "NotificationsViewController.h"
+#import "PastEventsViewController.h"
+
 
 @interface SideViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -71,7 +88,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,18 +101,21 @@
     
     switch (indexPath.row) {
         case 0:
-            cellText = @"Profile";
+            cellText = @"Home";
             break;
         case 1:
-            cellText = @"Payment";
+            cellText = @"Profile";
             break;
         case 2:
-            cellText = @"Transactions";
+            cellText = @"Payment";
             break;
         case 3:
-            cellText = @"Notifications";
+            cellText = @"Transactions";
             break;
         case 4:
+            cellText = @"Notifications";
+            break;
+        case 5:
             cellText = @"Past Events";
             break;
         default:
@@ -108,5 +128,43 @@
     return cell;
 }
 
+
+#pragma mark -- tableview delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BaseViewController *pushedVc = nil;
+    
+    switch (indexPath.row) {
+        case HOME_CELL:
+            pushedVc = [[HomeViewController alloc] init];
+            break;
+        case PROFILE_CELL:
+            pushedVc = [[ProfileViewController alloc] init];
+            break;
+        case PAYMENT_CELL:
+            pushedVc = [[PaymentViewController alloc] init];
+            break;
+        case TRASACTIONS_CELL:
+            pushedVc = [[TransactionsViewController alloc] init];
+            break;
+        case NOTIFICATONS_CELL:
+            pushedVc = [[NotificationsViewController alloc] init];
+            break;
+        case PAST_EVENTS_CELL:
+            pushedVc = [[PastEventsViewController alloc] init];
+            break;
+        default:
+            break;
+    }
+    
+    
+    BaseNavigationController *navController = [[BaseNavigationController alloc] initWithRootViewController:pushedVc];
+    
+    
+    self.viewDeckController.centerController = navController;
+    [self.viewDeckController toggleLeftViewAnimated:YES];
+    
+}
 
 @end

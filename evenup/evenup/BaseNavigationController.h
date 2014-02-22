@@ -1,5 +1,5 @@
 //
-//  BaseViewController.h
+//  BaseNavigationController.h
 //  evenup
 //
 //  Created by Kyle Connors on 2/21/14.
@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IIViewDeckController.h"
-@interface BaseViewController : UIViewController
-{
-    
-}
 
--(void)setLeftMenuButton;
+@interface BaseNavigationController : UINavigationController
+
 @end

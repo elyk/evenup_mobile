@@ -1,18 +1,18 @@
 //
-//  BaseViewController.m
+//  PaymentViewController.m
 //  evenup
 //
 //  Created by Kyle Connors on 2/21/14.
 //  Copyright (c) 2014 Kyle Connors. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "PaymentViewController.h"
 
-@interface BaseViewController ()
+@interface PaymentViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation PaymentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,21 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = NO;
-    
-
-    
-}
-
--(void)setLeftMenuButton
-{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-25.png"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftNav:)];
-}
-
--(void)toggleLeftNav:(id)sender
-{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
+    self.title = @"Payment Details";
+    [self setLeftMenuButton];
 }
 
 - (void)didReceiveMemoryWarning

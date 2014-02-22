@@ -10,6 +10,7 @@
 #import "IIViewDeckController.h"
 #import "HomeViewController.h"
 #import "SideViewController.h"
+#import "BaseNavigationController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -25,7 +26,7 @@
     
 
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeVc];
+    BaseNavigationController *navController = [[BaseNavigationController alloc] initWithRootViewController:homeVc];
     
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:navController leftViewController:sideVc];
     deckController.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;

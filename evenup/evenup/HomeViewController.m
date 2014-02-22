@@ -37,12 +37,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"EvenUP";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-25.png"] style:UIBarButtonItemStylePlain target:self action:@selector(toggleLeftNav:)];
+
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewEvent)];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setLeftMenuButton];
     
     UILabel *amountOwedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width/2, 15)];
     amountOwedLabel.text = @"AMOUNT OWED";

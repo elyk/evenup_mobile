@@ -39,6 +39,13 @@
 		27EB2AEB18B834BC00C2D851 /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE218B834BC00C2D851 /* menu-25@2x.png */; };
 		27EB2AEC18B834BC00C2D851 /* menu-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE318B834BC00C2D851 /* menu-512.png */; };
 		27EB2AED18B834BC00C2D851 /* menu-75.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE418B834BC00C2D851 /* menu-75.png */; };
+		27EB2AF118B835E900C2D851 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AF018B835E900C2D851 /* Server.m */; };
+		27EB2AF518B842F500C2D851 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AF418B842F500C2D851 /* ProfileViewController.m */; };
+		27EB2AF918B8431B00C2D851 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AF818B8431B00C2D851 /* PaymentViewController.m */; };
+		27EB2AFC18B8433300C2D851 /* TransactionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AFB18B8433300C2D851 /* TransactionsViewController.m */; };
+		27EB2B0018B8435800C2D851 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AFF18B8435800C2D851 /* NotificationsViewController.m */; };
+		27EB2B0318B8454300C2D851 /* PastEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0218B8454300C2D851 /* PastEventsViewController.m */; };
+		27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0518B846F100C2D851 /* BaseNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +106,20 @@
 		27EB2AE218B834BC00C2D851 /* menu-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-25@2x.png"; sourceTree = "<group>"; };
 		27EB2AE318B834BC00C2D851 /* menu-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-512.png"; sourceTree = "<group>"; };
 		27EB2AE418B834BC00C2D851 /* menu-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-75.png"; sourceTree = "<group>"; };
+		27EB2AEF18B835E900C2D851 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		27EB2AF018B835E900C2D851 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		27EB2AF318B842F500C2D851 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		27EB2AF418B842F500C2D851 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		27EB2AF718B8431B00C2D851 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		27EB2AF818B8431B00C2D851 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		27EB2AFA18B8433300C2D851 /* TransactionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsViewController.h; sourceTree = "<group>"; };
+		27EB2AFB18B8433300C2D851 /* TransactionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsViewController.m; sourceTree = "<group>"; };
+		27EB2AFE18B8435800C2D851 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		27EB2AFF18B8435800C2D851 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		27EB2B0118B8454300C2D851 /* PastEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastEventsViewController.h; sourceTree = "<group>"; };
+		27EB2B0218B8454300C2D851 /* PastEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastEventsViewController.m; sourceTree = "<group>"; };
+		27EB2B0418B846F100C2D851 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		27EB2B0518B846F100C2D851 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +179,9 @@
 		27EB2A8718B8160200C2D851 /* evenup */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2AFD18B8434000C2D851 /* Notifications */,
+				27EB2AF218B842E200C2D851 /* User */,
+				27EB2AEE18B835CF00C2D851 /* Controller */,
 				27EB2ADA18B8348600C2D851 /* Images */,
 				27EB2AC818B8184500C2D851 /* Login/Signup */,
 				27EB2AB918B816E600C2D851 /* Libs */,
@@ -206,6 +230,8 @@
 			children = (
 				27EB2AB318B8166600C2D851 /* BaseViewController.h */,
 				27EB2AB418B8166600C2D851 /* BaseViewController.m */,
+				27EB2B0418B846F100C2D851 /* BaseNavigationController.h */,
+				27EB2B0518B846F100C2D851 /* BaseNavigationController.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -230,6 +256,8 @@
 				27EB2ACA18B81E8F00C2D851 /* EventViewController.m */,
 				27EB2AD218B81F1400C2D851 /* AddEventViewController.h */,
 				27EB2AD318B81F1400C2D851 /* AddEventViewController.m */,
+				27EB2B0118B8454300C2D851 /* PastEventsViewController.h */,
+				27EB2B0218B8454300C2D851 /* PastEventsViewController.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -304,6 +332,37 @@
 				27EB2AE418B834BC00C2D851 /* menu-75.png */,
 			);
 			path = menu;
+			sourceTree = "<group>";
+		};
+		27EB2AEE18B835CF00C2D851 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2AEF18B835E900C2D851 /* Server.h */,
+				27EB2AF018B835E900C2D851 /* Server.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		27EB2AF218B842E200C2D851 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2AF318B842F500C2D851 /* ProfileViewController.h */,
+				27EB2AF418B842F500C2D851 /* ProfileViewController.m */,
+				27EB2AF718B8431B00C2D851 /* PaymentViewController.h */,
+				27EB2AF818B8431B00C2D851 /* PaymentViewController.m */,
+				27EB2AFA18B8433300C2D851 /* TransactionsViewController.h */,
+				27EB2AFB18B8433300C2D851 /* TransactionsViewController.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		27EB2AFD18B8434000C2D851 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2AFE18B8435800C2D851 /* NotificationsViewController.h */,
+				27EB2AFF18B8435800C2D851 /* NotificationsViewController.m */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,15 +473,22 @@
 				27EB2AB518B8166600C2D851 /* BaseViewController.m in Sources */,
 				27EB2AC318B8171B00C2D851 /* IIWrapController.m in Sources */,
 				27EB2AD918B8263D00C2D851 /* Event.m in Sources */,
+				27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */,
+				27EB2AF518B842F500C2D851 /* ProfileViewController.m in Sources */,
+				27EB2B0318B8454300C2D851 /* PastEventsViewController.m in Sources */,
 				27EB2ACB18B81E8F00C2D851 /* EventViewController.m in Sources */,
 				27EB2ACE18B81E9B00C2D851 /* LoginViewController.m in Sources */,
+				27EB2AF118B835E900C2D851 /* Server.m in Sources */,
 				27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */,
 				27EB2AC618B8172F00C2D851 /* SideViewController.m in Sources */,
 				27EB2A8E18B8160200C2D851 /* main.m in Sources */,
 				27EB2AB818B8167F00C2D851 /* HomeViewController.m in Sources */,
 				27EB2AC118B8171B00C2D851 /* IISideController.m in Sources */,
+				27EB2AFC18B8433300C2D851 /* TransactionsViewController.m in Sources */,
 				27EB2AD118B81EA700C2D851 /* SignUpViewController.m in Sources */,
 				27EB2AC218B8171B00C2D851 /* IIViewDeckController.m in Sources */,
+				27EB2AF918B8431B00C2D851 /* PaymentViewController.m in Sources */,
+				27EB2B0018B8435800C2D851 /* NotificationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
