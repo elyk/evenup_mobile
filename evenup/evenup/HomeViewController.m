@@ -8,9 +8,13 @@
 
 #import "HomeViewController.h"
 #import "AddEventViewController.h"
+#import "EventViewController.h"
+#import "Event.h"
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *eventsTable;
+    NSMutableArray *eventsArray;
+    
 }
 @end
 
@@ -29,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    self.title = @"EvenUP";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(toggleLeftNav:)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewEvent)];
@@ -40,24 +44,28 @@
     eventsTable.dataSource = self;
     [self.view addSubview:eventsTable];
     
+    [self loadEvents];
 }
 
-- (void)didReceiveMemoryWarning
+
+-(void)loadEvents
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    eventsArray = [NSMutableArray arrayWithArray:@[@"Event 1", @"Event 2", @"Event 3", @"Event 4"]];
+    [eventsTable reloadData];
 }
 
 -(void)createNewEvent
 {
-    [self.navigationController presentViewController:[[AddEventViewController alloc] init] animated:YES completion:nil];
+//    [self.navigationController presentViewController:[[AddEventViewController alloc] init] animated:YES completion:nil];
+    
+    [self.navigationController pushViewController:[[AddEventViewController alloc] init] animated:YES];
     
 }
 
-#pragma mark -- Tableview delegate
+#pragma mark -- Tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return eventsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,8 +75,20 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-    cell.textLabel.text = @"Test!";
+//    TODO -- model event and bring back
+    NSString *eventTitle = [eventsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = eventTitle;
     return cell;
+}
+
+#pragma mark -- Tableview delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    Event *event = [[Event alloc] initWithDictionary:<#(NSDictionary *)#>]
+    EventViewController *eventVc = [[EventViewController alloc] init];
+    [self.navigationController pushViewController:eventVc animated:YES];
+
 }
 
 @end

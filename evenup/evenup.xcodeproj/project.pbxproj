@@ -29,6 +29,7 @@
 		27EB2ACE18B81E9B00C2D851 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2ACD18B81E9B00C2D851 /* LoginViewController.m */; };
 		27EB2AD118B81EA700C2D851 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD018B81EA700C2D851 /* SignUpViewController.m */; };
 		27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD318B81F1400C2D851 /* AddEventViewController.m */; };
+		27EB2AD918B8263D00C2D851 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD818B8263D00C2D851 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		27EB2AD018B81EA700C2D851 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		27EB2AD218B81F1400C2D851 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		27EB2AD318B81F1400C2D851 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		27EB2AD718B8263D00C2D851 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		27EB2AD818B8263D00C2D851 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,8 @@
 		27EB2AB218B8165100C2D851 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2AD618B825CB00C2D851 /* Models */,
+				27EB2AD518B824D400C2D851 /* Cells */,
 				27EB2AC918B81E8F00C2D851 /* EventViewController.h */,
 				27EB2ACA18B81E8F00C2D851 /* EventViewController.m */,
 				27EB2AD218B81F1400C2D851 /* AddEventViewController.h */,
@@ -240,6 +245,22 @@
 				27EB2AD018B81EA700C2D851 /* SignUpViewController.m */,
 			);
 			name = Login/Signup;
+			sourceTree = "<group>";
+		};
+		27EB2AD518B824D400C2D851 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		27EB2AD618B825CB00C2D851 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2AD718B8263D00C2D851 /* Event.h */,
+				27EB2AD818B8263D00C2D851 /* Event.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +361,7 @@
 				27EB2A9218B8160200C2D851 /* AppDelegate.m in Sources */,
 				27EB2AB518B8166600C2D851 /* BaseViewController.m in Sources */,
 				27EB2AC318B8171B00C2D851 /* IIWrapController.m in Sources */,
+				27EB2AD918B8263D00C2D851 /* Event.m in Sources */,
 				27EB2ACB18B81E8F00C2D851 /* EventViewController.m in Sources */,
 				27EB2ACE18B81E9B00C2D851 /* LoginViewController.m in Sources */,
 				27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */,
