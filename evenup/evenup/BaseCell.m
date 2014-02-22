@@ -25,6 +25,8 @@
     if (self) {
         self.textField = [[UITextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2-10, 0, self.frame.size.width/2+10, self.frame.size.height)];
         [self.contentView addSubview:self.textField];
+        self.textLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+        self.textLabel.textColor = [UIColor lightGrayColor];
         
     }
     

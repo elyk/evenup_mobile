@@ -7,21 +7,24 @@
 //
 
 #import "PaymentViewController.h"
-#import "STPView.h"
-@interface PaymentViewController ()
-
+#import "BaseCell.h"
+#import "STPCard.h"
+#import "Stripe.h"
+@interface PaymentViewController () <UITableViewDataSource, UITableViewDelegate>
+{
+    STPCard *stripeCreditCard;
+    UITableView *formTableView;
+    
+    UIButton *saveButton;
+    
+    BaseCell *CreditCardNumberCell;
+    BaseCell *CreditCardMonthCell;
+    BaseCell *CreditCardYearCell;
+}
 @end
 
 @implementation PaymentViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -31,16 +34,85 @@
     
     [self setLeftMenuButton];
     
-    STPView *stripeView = [[STPView alloc] initWithFrame:CGRectMake(20, 50, self.view.frame.size.width-40, 300) andKey:@"pk_test_rYhRKdREwHaMp6KoaveWVNsE"];
+    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width-40, 220) style:UITableViewStyleGrouped];
+    formTableView.backgroundColor = [UIColor clearColor];
+    formTableView.dataSource = self;
+    formTableView.delegate = self;
+    formTableView.scrollEnabled = NO;
+    [self.view addSubview:formTableView];
     
-    [self.view addSubview:stripeView];
+    saveButton = [[UIButton alloc] initWithFrame:CGRectMake(20, formTableView.frame.size.height+formTableView.frame.origin.y+10, self.view.frame.size.width-40, 20)];
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [saveButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(sendCreditCard) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:saveButton];
+    
+    CreditCardNumberCell = [[BaseCell alloc] initAsCellTextField];
+    CreditCardNumberCell.textLabel.text = @"Card Number";
+    CreditCardNumberCell.textField.keyboardType = UIKeyboardTypeNumberPad;
 
+    CreditCardMonthCell = [[BaseCell alloc] initAsCellTextField];
+    CreditCardMonthCell.textLabel.text = @"Exp Month";
+    CreditCardMonthCell.textField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    CreditCardYearCell = [[BaseCell alloc] initAsCellTextField];
+    CreditCardYearCell.textLabel.text = @"Exp Year";
+    CreditCardYearCell.textField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    
+    
 }
 
-- (void)didReceiveMemoryWarning
+-(void)sendCreditCard
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    STPCard *card = [[STPCard alloc] init];
+    card.number = CreditCardNumberCell.textField.text;
+    card.expMonth = [CreditCardMonthCell.textField.text intValue];
+    card.expYear = [CreditCardYearCell.textField.text intValue];
+    
+    [Stripe createTokenWithCard:card
+                 publishableKey:STRIPE_SETTINGS_KEY
+                     completion:^(STPToken *token, NSError *error) {
+                         if (error) {
+                             NSLog(@"error is %@", error);
+                         } else {
+                             [self sendStripeTokenToServer:token]; // Hooray!
+                         }
+                     }];
+    
+    
+}
+
+-(void)sendStripeTokenToServer:(STPToken *)token
+{
+    NSLog(@"stripe token back is %@", token);
+}
+
+#pragma mark -- Tableview datasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BaseCell *formCell = nil;
+    switch (indexPath.row) {
+        case 0:
+            formCell = CreditCardNumberCell;
+            break;
+        case 1:
+            formCell = CreditCardMonthCell;
+            break;
+        case 2:
+            formCell = CreditCardYearCell;
+            break;
+        default:
+            break;
+    }
+    formCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return formCell;
 }
 
 @end

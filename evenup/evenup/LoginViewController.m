@@ -14,6 +14,7 @@
     UITableView *formTableView;
     UIButton *logInButton;
     UIButton *signUpButton;
+    UILabel *logoLabel;
 }
 @end
 
@@ -22,9 +23,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 40)];
+    logoLabel.font = [UIFont boldSystemFontOfSize:25.0f];    logoLabel.textAlignment = NSTextAlignmentCenter;
+    logoLabel.textColor = [UIColor blackColor];
+    logoLabel.text = @"EvenUP";
+    
+    [self.view addSubview:logoLabel];
+    
+
     self.title = @"Log In";
 	// Do any additional setup after loading the view.
-    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 75, self.view.frame.size.width-40, 140) style:UITableViewStyleGrouped];
+    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 120, self.view.frame.size.width-40, 140) style:UITableViewStyleGrouped];
     formTableView.backgroundColor = [UIColor clearColor];
     formTableView.dataSource = self;
     formTableView.delegate = self;
@@ -45,6 +55,11 @@
     
     [self.view addSubview:signUpButton];
 
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning

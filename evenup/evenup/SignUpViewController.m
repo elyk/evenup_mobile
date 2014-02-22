@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
     self.title = @"Sign Up";
+    self.navigationController.navigationBarHidden = NO;
 	// Do any additional setup after loading the view.
     formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 5, self.view.frame.size.width-40, 260) style:UITableViewStyleGrouped];
     formTableView.backgroundColor = [UIColor clearColor];

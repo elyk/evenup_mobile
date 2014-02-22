@@ -108,6 +108,8 @@
 		27EB2C7C18B890D200C2D851 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2C3118B890D100C2D851 /* textfield.png */; };
 		27EB2C7D18B890D200C2D851 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2C3218B890D100C2D851 /* textfield@2x.png */; };
 		27EB2C9018B890D200C2D851 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2C5718B890D100C2D851 /* README.md */; };
+		27EB2C9B18B91E1300C2D851 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9A18B91E1300C2D851 /* Utils.m */; };
+		27EB2C9E18B91EE800C2D851 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9D18B91EE800C2D851 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +287,10 @@
 		27EB2C3218B890D100C2D851 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		27EB2C5718B890D100C2D851 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		27EB2C9718B8913E00C2D851 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		27EB2C9918B91E1300C2D851 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		27EB2C9A18B91E1300C2D851 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		27EB2C9C18B91EE800C2D851 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		27EB2C9D18B91EE800C2D851 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +408,10 @@
 				27EB2B0518B846F100C2D851 /* BaseNavigationController.m */,
 				27EB2B0718B84CA800C2D851 /* BaseCell.h */,
 				27EB2B0818B84CA800C2D851 /* BaseCell.m */,
+				27EB2C9918B91E1300C2D851 /* Utils.h */,
+				27EB2C9A18B91E1300C2D851 /* Utils.m */,
+				27EB2C9C18B91EE800C2D851 /* Settings.h */,
+				27EB2C9D18B91EE800C2D851 /* Settings.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -913,9 +923,11 @@
 				27EB2AF118B835E900C2D851 /* Server.m in Sources */,
 				27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */,
 				27EB2B4918B87F0C00C2D851 /* UIRefreshControl+AFNetworking.m in Sources */,
+				27EB2C9B18B91E1300C2D851 /* Utils.m in Sources */,
 				27EB2B2F18B87F0300C2D851 /* AFURLResponseSerialization.m in Sources */,
 				27EB2B2918B87F0300C2D851 /* AFHTTPRequestOperationManager.m in Sources */,
 				27EB2B2818B87F0300C2D851 /* AFHTTPRequestOperation.m in Sources */,
+				27EB2C9E18B91EE800C2D851 /* Settings.m in Sources */,
 				27EB2B4F18B88B0B00C2D851 /* EventMemberViewController.m in Sources */,
 				27EB2B0918B84CA800C2D851 /* BaseCell.m in Sources */,
 				27EB2AC618B8172F00C2D851 /* SideViewController.m in Sources */,
