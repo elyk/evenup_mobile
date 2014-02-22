@@ -10,6 +10,8 @@
 	<string>evenup</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0C8C894A-F2B9-431C-84B9-CC43CAB3041D</key>
+		<string>ssh://github.com/tristanhimmelman/THContactPicker.git</string>
 		<key>EEDEB722-131E-403C-AADB-D49CC30556F4</key>
 		<string>ssh://github.com/elyk/evenup_mobile.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>evenup/evenup.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0C8C894A-F2B9-431C-84B9-CC43CAB3041D</key>
+		<string>../../evenup/THContactPicker</string>
 		<key>EEDEB722-131E-403C-AADB-D49CC30556F4</key>
 		<string>../../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>EEDEB722-131E-403C-AADB-D49CC30556F4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>evenup_mobile</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0C8C894A-F2B9-431C-84B9-CC43CAB3041D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>THContactPicker</string>
 		</dict>
 	</array>
 </dict>

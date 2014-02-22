@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
 @interface AddEventViewController : BaseViewController
+{
+    
+}
 
 @end
+

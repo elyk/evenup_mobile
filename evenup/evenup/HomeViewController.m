@@ -98,8 +98,13 @@
 {
     
     NSDictionary *eventDict = [[NSDictionary alloc] initWithObjects:@[@"Tahoe Trip", @"12", @"Tuesday", @"20", @"OPEN"] forKeys:@[@"title", @"members_count", @"event_date", @"amount_owed", @"status"]];
+    
+    NSDictionary *eventDict2 = [[NSDictionary alloc] initWithObjects:@[@"Tipsy Pig's", @"4", @"Tuesday", @"12", @"CLOSED"] forKeys:@[@"title", @"members_count", @"event_date", @"amount_owed", @"status"]];
+    
+    
     Event *event1 = [[Event alloc] initWithDictionary:eventDict];
-    eventsArray = [NSMutableArray arrayWithArray:@[event1]];
+    Event *event2 = [[Event alloc] initWithDictionary:eventDict2];
+    eventsArray = [NSMutableArray arrayWithArray:@[event1, event2]];
     [eventsTable reloadData];
 }
 

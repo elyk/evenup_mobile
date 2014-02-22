@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Kyle Connors. All rights reserved.
 //
 
+#define EVENT_STATUS_OPEN @"OPEN"
+#define EVENT_STATUS_CLOSED @"CLOSED"
+
 #import "MainEventCell.h"
 
 @interface MainEventCell ()
@@ -26,7 +29,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width/2, 25)];
+        eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width/2, 30)];
         eventTitleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
         eventTitleLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:eventTitleLabel];

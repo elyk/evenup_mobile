@@ -111,6 +111,14 @@
 		27EB2C9B18B91E1300C2D851 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9A18B91E1300C2D851 /* Utils.m */; };
 		27EB2C9E18B91EE800C2D851 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2C9D18B91EE800C2D851 /* Settings.m */; };
 		27EB2CA218B9391C00C2D851 /* MainEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2CA118B9391C00C2D851 /* MainEventCell.m */; };
+		27EB2CCA18B94DF500C2D851 /* AddDeviceContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2CC918B94DF500C2D851 /* AddDeviceContactsViewController.m */; };
+		27EB2CCD18B94E4600C2D851 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2CCB18B94E4600C2D851 /* AddressBook.framework */; };
+		27EB2CCE18B94E4600C2D851 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2CCC18B94E4600C2D851 /* AddressBookUI.framework */; };
+		27EB2CDD18B9574400C2D851 /* ContactsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2CDC18B9574400C2D851 /* ContactsData.m */; };
+		27EB2D2A18B95A5800C2D851 /* THBubbleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1B18B95A5800C2D851 /* THBubbleColor.m */; };
+		27EB2D2B18B95A5800C2D851 /* THContactBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1D18B95A5800C2D851 /* THContactBubble.m */; };
+		27EB2D2C18B95A5800C2D851 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */; };
+		27EB2D2D18B95A5800C2D851 /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +302,20 @@
 		27EB2C9D18B91EE800C2D851 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		27EB2CA018B9391C00C2D851 /* MainEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEventCell.h; sourceTree = "<group>"; };
 		27EB2CA118B9391C00C2D851 /* MainEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEventCell.m; sourceTree = "<group>"; };
+		27EB2CC818B94DF500C2D851 /* AddDeviceContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceContactsViewController.h; sourceTree = "<group>"; };
+		27EB2CC918B94DF500C2D851 /* AddDeviceContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceContactsViewController.m; sourceTree = "<group>"; };
+		27EB2CCB18B94E4600C2D851 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		27EB2CCC18B94E4600C2D851 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		27EB2CDB18B9574400C2D851 /* ContactsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsData.h; sourceTree = "<group>"; };
+		27EB2CDC18B9574400C2D851 /* ContactsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsData.m; sourceTree = "<group>"; };
+		27EB2D1A18B95A5800C2D851 /* THBubbleColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THBubbleColor.h; sourceTree = "<group>"; };
+		27EB2D1B18B95A5800C2D851 /* THBubbleColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THBubbleColor.m; sourceTree = "<group>"; };
+		27EB2D1C18B95A5800C2D851 /* THContactBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactBubble.h; sourceTree = "<group>"; };
+		27EB2D1D18B95A5800C2D851 /* THContactBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactBubble.m; sourceTree = "<group>"; };
+		27EB2D1E18B95A5800C2D851 /* THContactPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerView.h; sourceTree = "<group>"; };
+		27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerView.m; sourceTree = "<group>"; };
+		27EB2D2018B95A5800C2D851 /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
+		27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +323,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EB2CCD18B94E4600C2D851 /* AddressBook.framework in Frameworks */,
+				27EB2CCE18B94E4600C2D851 /* AddressBookUI.framework in Frameworks */,
 				27EB2B6718B88FBE00C2D851 /* QuartzCore.framework in Frameworks */,
 				27EB2A8418B8160200C2D851 /* CoreGraphics.framework in Frameworks */,
 				27EB2A8618B8160200C2D851 /* UIKit.framework in Frameworks */,
@@ -343,6 +367,8 @@
 		27EB2A8018B8160200C2D851 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2CCB18B94E4600C2D851 /* AddressBook.framework */,
+				27EB2CCC18B94E4600C2D851 /* AddressBookUI.framework */,
 				27EB2C9718B8913E00C2D851 /* SenTestingKit.framework */,
 				27EB2B6618B88FBE00C2D851 /* QuartzCore.framework */,
 				27EB2A8118B8160200C2D851 /* Foundation.framework */,
@@ -448,6 +474,7 @@
 		27EB2AB918B816E600C2D851 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2D0F18B95A5800C2D851 /* ContactPicker */,
 				27EB2BF518B890D100C2D851 /* Stripe */,
 				27EB2B3118B87F0C00C2D851 /* UIKit+AFNetworking */,
 				27EB2B1418B87F0300C2D851 /* AFNetworking */,
@@ -491,6 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				27EB2AD718B8263D00C2D851 /* Event.h */,
+				27EB2CDB18B9574400C2D851 /* ContactsData.h */,
+				27EB2CDC18B9574400C2D851 /* ContactsData.m */,
 				27EB2AD818B8263D00C2D851 /* Event.m */,
 			);
 			name = Models;
@@ -570,6 +599,8 @@
 			children = (
 				27EB2B0C18B863C400C2D851 /* AddItemView.h */,
 				27EB2B0D18B863C400C2D851 /* AddItemView.m */,
+				27EB2CC818B94DF500C2D851 /* AddDeviceContactsViewController.h */,
+				27EB2CC918B94DF500C2D851 /* AddDeviceContactsViewController.m */,
 			);
 			name = Add;
 			sourceTree = "<group>";
@@ -777,6 +808,21 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		27EB2D0F18B95A5800C2D851 /* ContactPicker */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2D1A18B95A5800C2D851 /* THBubbleColor.h */,
+				27EB2D1B18B95A5800C2D851 /* THBubbleColor.m */,
+				27EB2D1C18B95A5800C2D851 /* THContactBubble.h */,
+				27EB2D1D18B95A5800C2D851 /* THContactBubble.m */,
+				27EB2D1E18B95A5800C2D851 /* THContactPickerView.h */,
+				27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */,
+				27EB2D2018B95A5800C2D851 /* THContactPickerViewController.h */,
+				27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */,
+			);
+			path = ContactPicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -923,6 +969,7 @@
 				27EB2C6418B890D200C2D851 /* PKComponent.m in Sources */,
 				27EB2C6518B890D200C2D851 /* PKTextField.m in Sources */,
 				27EB2C6018B890D200C2D851 /* PKCard.m in Sources */,
+				27EB2D2A18B95A5800C2D851 /* THBubbleColor.m in Sources */,
 				27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */,
 				27EB2AF518B842F500C2D851 /* ProfileViewController.m in Sources */,
 				27EB2B4518B87F0C00C2D851 /* UIAlertView+AFNetworking.m in Sources */,
@@ -948,9 +995,14 @@
 				27EB2A8E18B8160200C2D851 /* main.m in Sources */,
 				27EB2AB818B8167F00C2D851 /* HomeViewController.m in Sources */,
 				27EB2AC118B8171B00C2D851 /* IISideController.m in Sources */,
+				27EB2D2C18B95A5800C2D851 /* THContactPickerView.m in Sources */,
+				27EB2CDD18B9574400C2D851 /* ContactsData.m in Sources */,
+				27EB2D2D18B95A5800C2D851 /* THContactPickerViewController.m in Sources */,
 				27EB2C5B18B890D100C2D851 /* Stripe.m in Sources */,
 				27EB2B2B18B87F0300C2D851 /* AFNetworkReachabilityManager.m in Sources */,
+				27EB2D2B18B95A5800C2D851 /* THContactBubble.m in Sources */,
 				27EB2B5218B88B1600C2D851 /* EventItemViewController.m in Sources */,
+				27EB2CCA18B94DF500C2D851 /* AddDeviceContactsViewController.m in Sources */,
 				27EB2AFC18B8433300C2D851 /* TransactionsViewController.m in Sources */,
 				27EB2B1318B87BAF00C2D851 /* EventAdminViewController.m in Sources */,
 				27EB2B4318B87F0C00C2D851 /* AFNetworkActivityIndicatorManager.m in Sources */,
