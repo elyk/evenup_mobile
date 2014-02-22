@@ -96,7 +96,8 @@
 {
 //    [self.navigationController presentViewController:[[AddEventViewController alloc] init] animated:YES completion:nil];
     
-    [self.navigationController pushViewController:[[AddEventViewController alloc] init] animated:YES];
+//    [self.navigationController pushViewController:[[AddEventViewController alloc] init] animated:YES];
+    [self showModalViewController:[[AddEventViewController alloc] init]];
     
 }
 

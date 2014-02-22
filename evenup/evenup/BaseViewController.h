@@ -14,4 +14,5 @@
 }
 
 -(void)setLeftMenuButton;
+-(void)showModalViewController:(BaseViewController *)viewController;
 @end

@@ -34,6 +34,7 @@
         self.layer.cornerRadius = 5;
         self.formTable.delegate = self;
         self.formTable.dataSource = self;
+        self.formTable.scrollEnabled = NO;
         self.formTable.backgroundColor = [UIColor clearColor];
         
         [self addSubview:self.formTable];

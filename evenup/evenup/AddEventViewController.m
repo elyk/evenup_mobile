@@ -60,8 +60,7 @@
 
 -(void)removeCurrentView
 {
-    //    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)createNewEvent

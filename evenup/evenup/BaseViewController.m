@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BaseNavigationController.h"
 @interface BaseViewController ()
 
 @end
@@ -48,6 +48,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)showModalViewController:(BaseViewController *)viewController
+{
+    BaseNavigationController *baseNavVc = [[BaseNavigationController alloc] initWithRootViewController:viewController];
+    
+    [self presentViewController:baseNavVc animated:YES completion:nil];
 }
 
 @end

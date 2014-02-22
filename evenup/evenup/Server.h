@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#define GET_REQUEST 1
+#define POST_REQUEST 2
+#define PATCH_REQUEST 3
+#define PUT_REQUEST 4
+
+#define BASE_URL @"http://www.baseurl.com"
+
+
+
 @interface Server : NSObject
 {
     
 }
 
 +(Server *)sharedServer;
-//-(void) getRequestWithUrl:(NSString *)url params:(NSDictionary *)params target:(id)target successMethod:(SEL)successMethod errorMethod:(SEL)errorMethod;
+-(void) requestOfType:(int)request_type forUrl:(NSString *)url params:(NSMutableDictionary *)params target:(id)target successMethod:(SEL)SuccessMethod errorMethod:(SEL)errorMethod;
 @end
