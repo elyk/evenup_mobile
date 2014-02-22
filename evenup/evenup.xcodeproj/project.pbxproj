@@ -30,6 +30,15 @@
 		27EB2AD118B81EA700C2D851 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD018B81EA700C2D851 /* SignUpViewController.m */; };
 		27EB2AD418B81F1400C2D851 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD318B81F1400C2D851 /* AddEventViewController.m */; };
 		27EB2AD918B8263D00C2D851 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2AD818B8263D00C2D851 /* Event.m */; };
+		27EB2AE518B834BC00C2D851 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2ADC18B834BC00C2D851 /* license.txt */; };
+		27EB2AE618B834BC00C2D851 /* menu-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2ADD18B834BC00C2D851 /* menu-100.png */; };
+		27EB2AE718B834BC00C2D851 /* menu-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2ADE18B834BC00C2D851 /* menu-128.png */; };
+		27EB2AE818B834BC00C2D851 /* menu-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2ADF18B834BC00C2D851 /* menu-25.png */; };
+		27EB2AE918B834BC00C2D851 /* menu-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE018B834BC00C2D851 /* menu-256.png */; };
+		27EB2AEA18B834BC00C2D851 /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE118B834BC00C2D851 /* menu-32.png */; };
+		27EB2AEB18B834BC00C2D851 /* menu-25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE218B834BC00C2D851 /* menu-25@2x.png */; };
+		27EB2AEC18B834BC00C2D851 /* menu-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE318B834BC00C2D851 /* menu-512.png */; };
+		27EB2AED18B834BC00C2D851 /* menu-75.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EB2AE418B834BC00C2D851 /* menu-75.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +90,15 @@
 		27EB2AD318B81F1400C2D851 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		27EB2AD718B8263D00C2D851 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		27EB2AD818B8263D00C2D851 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		27EB2ADC18B834BC00C2D851 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		27EB2ADD18B834BC00C2D851 /* menu-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-100.png"; sourceTree = "<group>"; };
+		27EB2ADE18B834BC00C2D851 /* menu-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-128.png"; sourceTree = "<group>"; };
+		27EB2ADF18B834BC00C2D851 /* menu-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-25.png"; sourceTree = "<group>"; };
+		27EB2AE018B834BC00C2D851 /* menu-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-256.png"; sourceTree = "<group>"; };
+		27EB2AE118B834BC00C2D851 /* menu-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-32.png"; sourceTree = "<group>"; };
+		27EB2AE218B834BC00C2D851 /* menu-25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-25@2x.png"; sourceTree = "<group>"; };
+		27EB2AE318B834BC00C2D851 /* menu-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-512.png"; sourceTree = "<group>"; };
+		27EB2AE418B834BC00C2D851 /* menu-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-75.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +158,7 @@
 		27EB2A8718B8160200C2D851 /* evenup */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2ADA18B8348600C2D851 /* Images */,
 				27EB2AC818B8184500C2D851 /* Login/Signup */,
 				27EB2AB918B816E600C2D851 /* Libs */,
 				27EB2AB218B8165100C2D851 /* Event */,
@@ -263,6 +282,30 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		27EB2ADA18B8348600C2D851 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2ADB18B834BC00C2D851 /* menu */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		27EB2ADB18B834BC00C2D851 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2ADC18B834BC00C2D851 /* license.txt */,
+				27EB2ADD18B834BC00C2D851 /* menu-100.png */,
+				27EB2ADE18B834BC00C2D851 /* menu-128.png */,
+				27EB2ADF18B834BC00C2D851 /* menu-25.png */,
+				27EB2AE018B834BC00C2D851 /* menu-256.png */,
+				27EB2AE118B834BC00C2D851 /* menu-32.png */,
+				27EB2AE218B834BC00C2D851 /* menu-25@2x.png */,
+				27EB2AE318B834BC00C2D851 /* menu-512.png */,
+				27EB2AE418B834BC00C2D851 /* menu-75.png */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -338,8 +381,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EB2AE518B834BC00C2D851 /* license.txt in Resources */,
 				27EB2A8C18B8160200C2D851 /* InfoPlist.strings in Resources */,
+				27EB2AE918B834BC00C2D851 /* menu-256.png in Resources */,
+				27EB2AED18B834BC00C2D851 /* menu-75.png in Resources */,
+				27EB2AE618B834BC00C2D851 /* menu-100.png in Resources */,
 				27EB2A9418B8160200C2D851 /* Images.xcassets in Resources */,
+				27EB2AEB18B834BC00C2D851 /* menu-25@2x.png in Resources */,
+				27EB2AEA18B834BC00C2D851 /* menu-32.png in Resources */,
+				27EB2AE718B834BC00C2D851 /* menu-128.png in Resources */,
+				27EB2AE818B834BC00C2D851 /* menu-25.png in Resources */,
+				27EB2AEC18B834BC00C2D851 /* menu-512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

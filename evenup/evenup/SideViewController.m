@@ -78,7 +78,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
     NSString *cellText = nil;
     
@@ -94,6 +94,9 @@
             break;
         case 3:
             cellText = @"Notifications";
+            break;
+        case 4:
+            cellText = @"Past Events";
             break;
         default:
             cellText = @"";
