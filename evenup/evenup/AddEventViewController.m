@@ -32,9 +32,6 @@
 	// Do any additional setup after loading the view.
     self.title = @"New Event";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(removeCurrentView)];
-    
-    
     addEventTableForm = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200) style:UITableViewStyleGrouped];
     addEventTableForm.delegate = self;
     addEventTableForm.dataSource = self;
@@ -56,11 +53,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)removeCurrentView
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)createNewEvent

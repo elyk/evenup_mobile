@@ -9,7 +9,7 @@
 #define EVENT_TOGGLE_MEMBERS 1
 
 #import "EventViewController.h"
-
+#import "EventAdminViewController.h"
 
 @interface EventViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -35,11 +35,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Event Title";
+    
+//    TODO -- only an admin should see this
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAdminView)];
     toggleSegment = [[UISegmentedControl alloc] initWithItems:@[@"Items", @"Members"]];
     toggleSegment.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
     [toggleSegment addTarget:self action:@selector(didChangeSegmentValue:) forControlEvents:UIControlEventValueChanged];
     toggleSegment.selectedSegmentIndex = 0;
-//    toggleSegment.backgroundColor = [UIColor greenColor];
+
     [self.view addSubview:toggleSegment];
     
     addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
@@ -69,6 +72,8 @@
     
     [self.view addGestureRecognizer:tap];
     
+    eventItemsArray = [NSArray arrayWithObjects:@"Item 1", @"Item 2", nil];
+    eventMembersArray = [NSArray arrayWithObjects:@"Member 1", @"Member 2", nil];
     
 }
 
@@ -76,6 +81,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)showAdminView
+{
+    [self showModalViewController:[[EventAdminViewController alloc] init]];
 }
 
 -(void)didChangeSegmentValue:(UISegmentedControl *)sender
@@ -88,16 +98,20 @@
     }
 }
 
+
+
 -(void)showItems
 {
     [addMember setHidden:YES];
     [addItem setHidden:NO];
+    [eventTable reloadData];
 }
 
 -(void)showMembers
 {
     [addItem setHidden:YES];
     [addMember setHidden:NO];
+    [eventTable reloadData];
 }
 
 -(void)addItemToEvent
@@ -169,7 +183,14 @@
 #pragma mark -- Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
+        return eventItemsArray.count;
+    } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
+        return eventMembersArray.count;
+    } else {
+        return 0;
+    }
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -179,23 +200,12 @@
     }
     NSString *cellText = nil;
     
-    switch (indexPath.row) {
-        case 0:
-            cellText = @"Event Name";
-            break;
-        case 1:
-            cellText = @"Payment";
-            break;
-        case 2:
-            cellText = @"Transactions";
-            break;
-        case 3:
-            cellText = @"Notifications";
-            break;
-        default:
-            cellText = @"";
-            break;
+    if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
+        cellText = [eventItemsArray objectAtIndex:indexPath.row];
+    } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
+        cellText = [eventMembersArray objectAtIndex:indexPath.row];
     }
+    
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = cellText;
     cell.textLabel.textColor = [UIColor blackColor];

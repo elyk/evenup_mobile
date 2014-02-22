@@ -55,6 +55,15 @@
     BaseNavigationController *baseNavVc = [[BaseNavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:baseNavVc animated:YES completion:nil];
+    
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(removeCurrentView)];
+    
+    
+}
+
+-(void)removeCurrentView
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
