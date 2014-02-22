@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "SignUpViewController.h"
 @protocol LoginViewControllerDelegate;
 
 
@@ -17,6 +17,9 @@
     
 }
 @property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
+
+@property (nonatomic, strong) SignUpViewController *signUpVc;
+
 @end
 // 3. Definition of the delegate's interface
 @protocol LoginViewControllerDelegate <NSObject>

@@ -19,12 +19,11 @@
     return self;
 }
 
--(id)initAsCellTextFieldWithPlaceholder:(NSString *)placeholder
+-(id)initAsCellTextField
 {
     self = [super init];
     if (self) {
-        self.textField = [[UITextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2, self.frame.size.height)];
-        self.textField.placeholder = placeholder;
+        self.textField = [[UITextField alloc] initWithFrame:CGRectMake(self.frame.size.width/2-10, 0, self.frame.size.width/2+10, self.frame.size.height)];
         [self.contentView addSubview:self.textField];
         
     }

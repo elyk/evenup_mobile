@@ -36,8 +36,11 @@
 -(void)bringUserToLogin
 {
     LoginViewController *loginVc = [[LoginViewController alloc] init];
+    
+    BaseNavigationController *navController = [[BaseNavigationController alloc] initWithRootViewController:loginVc];
+    
     loginVc.delegate = self;
-    self.window.rootViewController = loginVc;
+    self.window.rootViewController = navController;
 }
 
 -(void)bringUserToHome
@@ -62,6 +65,14 @@
 {
     [self bringUserToHome];
 }
+//
+//#pragma mark - signup vc delegate
+//
+//- (void)SignUpViewController:(SignUpViewController *)viewController
+//               didSignUpUser:(BOOL)value
+//{
+//    [self bringUserToHome];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

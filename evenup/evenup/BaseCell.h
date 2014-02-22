@@ -14,5 +14,5 @@
 }
 
 @property(nonatomic, strong)UITextField *textField;
--(id)initAsCellTextFieldWithPlaceholder:(NSString *)placeholder;
+-(id)initAsCellTextField;
 @end

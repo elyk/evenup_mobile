@@ -8,6 +8,20 @@
 
 #import "BaseViewController.h"
 
+@protocol SignUpViewControllerDelegate;
+
 @interface SignUpViewController : BaseViewController
+{
+    
+}
+@property (nonatomic, weak) id<SignUpViewControllerDelegate> delegate;
+
+
+@end
+// 3. Definition of the delegate's interface
+@protocol SignUpViewControllerDelegate <NSObject>
+
+- (void)SignUpViewController:(SignUpViewController *)viewController
+               didSignUpUser:(BOOL)value;
 
 @end
