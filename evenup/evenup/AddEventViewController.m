@@ -7,7 +7,7 @@
 //
 
 #import "AddEventViewController.h"
-
+#import "BaseCell.h"
 @interface AddEventViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *addEventTableForm;
@@ -35,9 +35,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(removeCurrentView)];
     
     
-    addEventTableForm = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200) style:UITableViewStylePlain];
+    addEventTableForm = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200) style:UITableViewStyleGrouped];
     addEventTableForm.delegate = self;
     addEventTableForm.dataSource = self;
+    addEventTableForm.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:addEventTableForm];
     
@@ -75,33 +76,24 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    }
-    NSString *cellText = nil;
-    
+    BaseCell *formCell = [[BaseCell alloc] initAsCellTextField];
+    NSString *textLabel = nil;
+    NSString *textPlaceHolder = nil;
     switch (indexPath.row) {
         case 0:
-            cellText = @"Event Name";
+            textLabel = @"Event Name";
+            textPlaceHolder = @"enter name..";
             break;
         case 1:
-            cellText = @"Payment";
-            break;
-        case 2:
-            cellText = @"Transactions";
-            break;
-        case 3:
-            cellText = @"Notifications";
-            break;
+            textLabel = @"Add contacts";
+            textPlaceHolder = @"Enter Password";
         default:
-            cellText = @"";
             break;
     }
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = cellText;
-    cell.textLabel.textColor = [UIColor blackColor];
-    return cell;
+    formCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    formCell.textLabel.text = textLabel;
+    formCell.textField.placeholder = textPlaceHolder;
+    return formCell;
 }
 
 @end

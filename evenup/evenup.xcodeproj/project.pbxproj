@@ -47,6 +47,7 @@
 		27EB2B0318B8454300C2D851 /* PastEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0218B8454300C2D851 /* PastEventsViewController.m */; };
 		27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0518B846F100C2D851 /* BaseNavigationController.m */; };
 		27EB2B0918B84CA800C2D851 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0818B84CA800C2D851 /* BaseCell.m */; };
+		27EB2B0E18B863C400C2D851 /* AddItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2B0D18B863C400C2D851 /* AddItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		27EB2B0518B846F100C2D851 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		27EB2B0718B84CA800C2D851 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		27EB2B0818B84CA800C2D851 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		27EB2B0C18B863C400C2D851 /* AddItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemView.h; sourceTree = "<group>"; };
+		27EB2B0D18B863C400C2D851 /* AddItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,10 +258,9 @@
 		27EB2AB218B8165100C2D851 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2B0A18B8621A00C2D851 /* Details */,
 				27EB2AD618B825CB00C2D851 /* Models */,
 				27EB2AD518B824D400C2D851 /* Cells */,
-				27EB2AC918B81E8F00C2D851 /* EventViewController.h */,
-				27EB2ACA18B81E8F00C2D851 /* EventViewController.m */,
 				27EB2AD218B81F1400C2D851 /* AddEventViewController.h */,
 				27EB2AD318B81F1400C2D851 /* AddEventViewController.m */,
 				27EB2B0118B8454300C2D851 /* PastEventsViewController.h */,
@@ -370,6 +372,25 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
+		27EB2B0A18B8621A00C2D851 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2B0B18B8627700C2D851 /* Add */,
+				27EB2ACA18B81E8F00C2D851 /* EventViewController.m */,
+				27EB2AC918B81E8F00C2D851 /* EventViewController.h */,
+			);
+			name = Details;
+			sourceTree = "<group>";
+		};
+		27EB2B0B18B8627700C2D851 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2B0C18B863C400C2D851 /* AddItemView.h */,
+				27EB2B0D18B863C400C2D851 /* AddItemView.m */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -477,6 +498,7 @@
 				27EB2A9218B8160200C2D851 /* AppDelegate.m in Sources */,
 				27EB2AB518B8166600C2D851 /* BaseViewController.m in Sources */,
 				27EB2AC318B8171B00C2D851 /* IIWrapController.m in Sources */,
+				27EB2B0E18B863C400C2D851 /* AddItemView.m in Sources */,
 				27EB2AD918B8263D00C2D851 /* Event.m in Sources */,
 				27EB2B0618B846F100C2D851 /* BaseNavigationController.m in Sources */,
 				27EB2AF518B842F500C2D851 /* ProfileViewController.m in Sources */,

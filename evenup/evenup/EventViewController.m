@@ -9,6 +9,7 @@
 #define EVENT_TOGGLE_MEMBERS 1
 
 #import "EventViewController.h"
+#import "AddItemView.h"
 
 @interface EventViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,20 +21,14 @@
     
     UIButton *addItem;
     UIButton *addMember;
+    
+    UIView *darkBGView;
+    
 
 }
 @end
 
 @implementation EventViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -41,18 +36,19 @@
 	// Do any additional setup after loading the view.
     self.title = @"Event Title";
     toggleSegment = [[UISegmentedControl alloc] initWithItems:@[@"Items", @"Members"]];
-    toggleSegment.frame = CGRectMake(0, 0, self.view.frame.size.width, 30);
+    toggleSegment.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
     [toggleSegment addTarget:self action:@selector(didChangeSegmentValue:) forControlEvents:UIControlEventValueChanged];
+    toggleSegment.selectedSegmentIndex = 0;
 //    toggleSegment.backgroundColor = [UIColor greenColor];
     [self.view addSubview:toggleSegment];
     
-    addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 40, self.view.frame.size.width-40, 30)];
+    addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
     [addItem setTitle:@"Add Item +" forState:UIControlStateNormal];
     [addItem setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [addItem addTarget:self action:@selector(addItemToEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addItem];
     
-    addMember = [[UIButton alloc] initWithFrame:CGRectMake(20, 40, self.view.frame.size.width-40, 30)];
+    addMember = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
     [addMember setTitle:@"Add Member +" forState:UIControlStateNormal];
     [addMember setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [addMember addTarget:self action:@selector(addMemberToEvent) forControlEvents:UIControlEventTouchUpInside];
@@ -98,12 +94,36 @@
 
 -(void)addItemToEvent
 {
+    AddItemView *addItemView = [[AddItemView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 350)];
+    CGRect currentFrame = addItemView.frame;
+    [self.view addSubview:addItemView];
+    [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self addGrayBGView];
+        [self.view bringSubviewToFront:addItemView];
+        [addItemView adjustFrame:CGRectMake(currentFrame.origin.x, 10, currentFrame.size.width, currentFrame.size.height)];
+    } completion:^(BOOL finished) {
+        NSLog(@"animation complete");
+    }];
     
 }
 
 -(void)addMemberToEvent
 {
     
+}
+
+-(void)addGrayBGView
+{
+    darkBGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    darkBGView.backgroundColor = [UIColor blackColor];
+    darkBGView.alpha = .7;
+    [self.view addSubview:darkBGView];
+}
+
+-(void)removeDarkBGView
+{
+    [darkBGView removeFromSuperview];
+    darkBGView = nil;
 }
 
 #pragma mark -- Tableview delegate
