@@ -12,7 +12,6 @@
 #import "EventAdminViewController.h"
 #import "EventItemViewController.h"
 #import "EventMemberViewController.h"
-#import "Event.h"
 #import "EventItem.h"
 #import "EventItemCell.h"
 #import "EventMemberCell.h"
@@ -52,7 +51,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = @"Event Title";
+    self.title = _event.title;
     
 //    TODO -- only an admin should see this
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAdminView)];
@@ -90,15 +89,51 @@
     [self.view addSubview:eventTable];
     
     
-    eventItemsArray = [NSArray arrayWithObjects:@"Item 1", @"Item 2", nil];
+//    eventItemsArray = [NSArray arrayWithObjects:@"Item 1", @"Item 2", nil];
     eventMembersArray = [NSArray arrayWithObjects:@"Member 1", @"Member 2", nil];
+    
     
 }
 
-- (void)didReceiveMemoryWarning
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    [self fetchBills];
+}
+
+-(void)fetchBills
+{
+    
+
+    NSString *url = [NSString stringWithFormat:EVENT_BILL_ITEMS_URL, _event.event_id];
+
+    [[Server sharedServer] requestOfType:GET_REQUEST forUrl:url params:nil target:self successMethod:@selector(billItemSuccessResponse:) errorMethod:@selector(billItemsErrorResponse:)];
+    
+}
+
+#pragma mark -- Server responses
+-(void)billItemSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+    NSMutableArray *array = [response valueForKey:@"results"];
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    
+    for (NSMutableDictionary *dict in array) {
+        EventItem *item = [[EventItem alloc] initWithDictionary:dict];
+        [newArray addObject:item];
+    }
+    
+    
+    eventItemsArray = newArray;
+    [eventTable reloadData];
+    
+    
+}
+
+-(void)billItemsErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
+
 }
 
 -(void)showAdminView
@@ -142,6 +177,7 @@
 -(void)showAddView:(AddItemView *)addView
 {
     addView.delegate = self;
+    addView.eventId = _event.event_id;
     CGRect currentFrame = addView.frame;
     [self.view addSubview:addView];
     [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -213,6 +249,7 @@
 -(void)AddItemView:(AddItemView *) view didAddItem:(EventItem *)item
 {
 //    TODO -- add item to the array;
+    [self fetchBills];
     [self hideAndRemoveAddView:view];
 }
 
@@ -239,11 +276,16 @@
     
     cell = [self ItemCellfromCell:cell];
     
+    EventItem *item = [eventItemsArray objectAtIndex:indexPath.row];
+    
+    [cell setItem:item];
     EventMemberCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
     if (cell2 == nil) {
         cell2 = [[EventMemberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell2"];
         
     }
+    
+
     
     [cell2 setMember:nil];
     
@@ -268,7 +310,7 @@
 
 // EVENT ITEM CELL 
 -(EventItemCell *)ItemCellfromCell:(EventItemCell*) cell{
-    [cell setItem:nil];
+
     
     cell.backgroundColor = [UIColor clearColor];
     // Configuring the views and colors.

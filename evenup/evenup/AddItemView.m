@@ -9,6 +9,7 @@
 #import "AddItemView.h"
 #import "BaseCell.h"
 #import "Utils.h"
+#import "Server.h"
 @interface AddItemView () <UITableViewDelegate, UITableViewDataSource>
 {
     UILabel *titleLabel;
@@ -77,8 +78,32 @@
 
 -(void)didSelectAdd
 {
+    
+    NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:itemNameCell.textField.text forKey:@"description"];
+    [paramsDict setObject:itemPriceCell.textField.text forKey:@"cost"];
+    
+    NSString *url = [NSString stringWithFormat:EVENT_BILL_ITEMS_URL, self.eventId];
+    
+    [[Server sharedServer] requestOfType:POST_REQUEST forUrl:url params:paramsDict target:self successMethod:@selector(newEventItemSuccessResponse:) errorMethod:@selector(newEventItemErrorResponse:)];
+    
+    
+}
+
+#pragma mark -- Server responses
+-(void)newEventItemSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+    [self.delegate AddItemView:self didAddItem:nil];
+    
+}
+
+-(void)newEventItemErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
     [self.delegate AddItemView:self didAddItem:nil];
 }
+
 
 #pragma mark -- Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

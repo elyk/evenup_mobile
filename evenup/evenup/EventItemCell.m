@@ -88,12 +88,12 @@
 
 -(void)setItem:(EventItem *)eventItem
 {
-    itemTitleLabel.text = @"Item Name";
+    itemTitleLabel.text = eventItem.title;
 //    eventItem.title;
-    eventMembersLabel.text = [NSString stringWithFormat:@"JOHN, BILL, MARY"];
+    eventMembersLabel.text = eventItem.bill_splitters;
     eventOwnerLabel.text = [NSString stringWithFormat:@"%@ PAID", @"JOHN"];
 //    eventItem.event_payer
-    eventPriceLabel.text = @"$35";
+    eventPriceLabel.text = [NSString stringWithFormat:@"$%@", eventItem.event_price];
 //    eventItem.event_price;
 }
 

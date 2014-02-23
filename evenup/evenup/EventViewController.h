@@ -8,9 +8,11 @@
 
 #import "BaseViewController.h"
 #import "AddItemView.h"
+#import "Event.h"
 @interface EventViewController : BaseViewController
 {
     
 }
 @property (nonatomic, strong) AddItemView *addItemView;
+-(id)initWithEvent:(Event *)event;
 @end

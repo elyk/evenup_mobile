@@ -25,6 +25,7 @@
 //EVENTS
 
 #define EVENTS_URL @"events/"
+#define EVENT_BILL_ITEMS_URL @"events/%@/billitems/"
 
 @interface Server : NSObject
 {

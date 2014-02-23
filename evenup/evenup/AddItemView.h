@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UITableView *formTable;
 @property BOOL is_displayed;
 -(void)adjustFrame:(CGRect)frame;
+@property (nonatomic, strong) NSString *eventId;
 @end
 
 @protocol AddItemViewDelegate <NSObject>

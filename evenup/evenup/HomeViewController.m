@@ -64,15 +64,15 @@
     
     amountOwedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width/2, 30)];
     amountOwedValueLabel.text = @"$0";
-    amountOwedValueLabel.textColor = [UIColor colorWithRed:77/255.0f green:138/255.0f blue:0/255.0f alpha:1.0f];
-    amountOwedValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
+    amountOwedValueLabel.textColor = [Utils Color2];
+    amountOwedValueLabel.font = [UIFont systemFontOfSize:28.0f];
     amountOwedValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountOwedValueLabel];
     
     amountDueValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 50, self.view.frame.size.width/2, 30)];
     amountDueValueLabel.text = @"$0";
-    amountDueValueLabel.textColor = [UIColor colorWithRed:214/255.0f green:0/255.0f blue:0/255.0f alpha:1.0f];
-    amountDueValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
+    amountDueValueLabel.textColor = [Utils Color1];
+    amountDueValueLabel.font = [UIFont systemFontOfSize:28.0f];
     amountDueValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountDueValueLabel];
     
@@ -190,8 +190,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    Event *event = [[Event alloc] initWithDictionary:<#(NSDictionary *)#>]
-    EventViewController *eventVc = [[EventViewController alloc] init];
+    Event *event = [eventsArray objectAtIndex:indexPath.row];
+    EventViewController *eventVc = [[EventViewController alloc] initWithEvent:event];
     [self.navigationController pushViewController:eventVc animated:YES];
 
 }

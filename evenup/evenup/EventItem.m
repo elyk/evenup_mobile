@@ -14,11 +14,24 @@
 {
     self = [super init];
     if (self) {
-        self.title = dictionary[@"title"];
+        self.title = dictionary[@"description"];
         self.event_members = dictionary[@"event_members"];
+        self.bill_splits = dictionary[@"bill_item_splits"];
         self.event_payer = dictionary[@"event_payer"];
-        self.event_price = dictionary[@"event_price"];
+        self.event_price = [NSString stringWithFormat:@"%i", [dictionary[@"cost"] intValue]];
         self.did_pay = [dictionary[@"did_pay"] boolValue];
+        
+        
+        NSMutableString *membersString = [[NSMutableString alloc] init];
+        for (NSMutableDictionary *dict in self.bill_splits) {
+            NSString *name = dict[@"owner"];
+            NSString *stringW = [NSString stringWithFormat:@"%@ ", name];
+            [membersString appendString:stringW];
+            
+            
+        }
+        
+        self.bill_splitters = [NSString stringWithString:membersString];
     }
     
     return self;
