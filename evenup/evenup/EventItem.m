@@ -17,7 +17,7 @@
         self.title = dictionary[@"description"];
         self.event_members = dictionary[@"event_members"];
         self.bill_splits = dictionary[@"bill_item_splits"];
-        self.event_payer = dictionary[@"event_payer"];
+        self.event_payer = dictionary[@"purchaser"];
         self.event_price = [NSString stringWithFormat:@"%i", [dictionary[@"cost"] intValue]];
         self.did_pay = [dictionary[@"did_pay"] boolValue];
         

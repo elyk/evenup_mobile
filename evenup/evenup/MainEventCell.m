@@ -30,7 +30,7 @@
     if (self) {
         // Initialization code
         eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width/2, 30)];
-        eventTitleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
+        eventTitleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         eventTitleLabel.textAlignment = NSTextAlignmentCenter;
         eventTitleLabel.textColor = [Utils Color4];
         [self.contentView addSubview:eventTitleLabel];
@@ -68,7 +68,7 @@
         eventOwedLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 40, self.frame.size.width/2-30, 10)];
         eventOwedLabel.font = [UIFont boldSystemFontOfSize:12.0f];
         eventOwedLabel.textAlignment = NSTextAlignmentRight;
-        eventOwedLabel.textColor = [UIColor colorWithRed:77/255.0f green:138/255.0f blue:0/255.0f alpha:1.0f];
+        eventOwedLabel.textColor = [Utils Color5];
         [self.contentView addSubview:eventOwedLabel];
         
         

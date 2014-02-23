@@ -15,7 +15,9 @@
 #import "EventItem.h"
 #import "EventItemCell.h"
 #import "EventMemberCell.h"
-@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate, AddItemViewDelegate>
+#import "AddDeviceContactsViewController.h"
+#import "ContactsData.h"
+@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate, AddItemViewDelegate, AddDeviceContactsViewControllerDelegate>
 {
     UITableView *eventTable;
     UISegmentedControl *toggleSegment;
@@ -90,7 +92,7 @@
     
     
 //    eventItemsArray = [NSArray arrayWithObjects:@"Item 1", @"Item 2", nil];
-    eventMembersArray = [NSArray arrayWithObjects:@"Member 1", @"Member 2", nil];
+//    eventMembersArray = [NSArray arrayWithObjects:@"Member 1", @"Member 2", nil];
     
     
 }
@@ -99,6 +101,7 @@
 {
     [super viewWillAppear:animated];
     [self fetchBills];
+    [self fetchMembers];
 }
 
 -(void)fetchBills
@@ -134,6 +137,42 @@
 {
     NSLog(@"error response is %@", response);
 
+}
+
+-(void)fetchMembers
+{
+    
+    
+    NSString *url = [NSString stringWithFormat:EVENT_BILL_MEMBERS_URL, _event.event_id];
+    
+    [[Server sharedServer] requestOfType:GET_REQUEST forUrl:url params:nil target:self successMethod:@selector(billMemberSuccessResponse:) errorMethod:@selector(billMemberErrorResponse:)];
+    
+}
+
+#pragma mark -- Server responses
+-(void)billMemberSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+    NSMutableArray *array = [response valueForKey:@"results"];
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    
+    for (NSMutableDictionary *dict in array) {
+        NSLog(@"__dict is %@", dict);
+        EventMember *member= [[EventMember alloc] initWithDictionary:dict];
+        [newArray addObject:member];
+    }
+    
+    
+    eventMembersArray = newArray;
+    [eventTable reloadData];
+    
+    
+}
+
+-(void)billMemberErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
+    
 }
 
 -(void)showAdminView
@@ -216,10 +255,62 @@
     
     
 }
-
+#pragma mark -- add device stuff
 -(void)addMemberToEvent
 {
+    AddDeviceContactsViewController *addDeviceVc = [[AddDeviceContactsViewController alloc] initWithContacts:[Utils getAllContacts]];
     
+//    [self presentViewController:addDeviceVc animated:YES completion:nil];
+    [self showModalViewController:addDeviceVc];
+    addDeviceVc.delegate = self;
+}
+
+-(void)AddDeviceViewController:(AddDeviceContactsViewController *) viewController selectedContacts:(NSMutableArray *)contacts
+{
+    NSLog(@"contacts are %@", contacts);
+    [self createEventContactsWithContacts:contacts];
+
+    
+}
+
+-(void)createEventContactsWithContacts:(NSMutableArray *)contacts
+{
+    if (contacts.count > 0) {
+        for (ContactsData *contact in contacts) {
+            NSString *name = [NSString stringWithFormat:@"%@ %@", contact.firstNames, contact.lastNames];
+            NSString *number = [contact.phoneNumbers objectAtIndex:0];
+            
+            NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+            
+            [paramsDict setObject:name forKey:@"name"];
+            [paramsDict setObject:number forKey:@"number"];
+            
+            
+            NSString *url = [NSString stringWithFormat:EVENT_BILL_MEMBERS_URL, _event.event_id];
+            
+            [[Server sharedServer] requestOfType:POST_REQUEST forUrl:url params:paramsDict target:self successMethod:@selector(addContactsSuccessResponse:) errorMethod:@selector(addContactsErrorResponse:)];
+        };
+        
+        
+        
+        
+    }
+    
+    
+    
+}
+
+#pragma mark -- Server responses
+-(void)addContactsSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+
+    
+}
+
+-(void)addContactsErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 -(void)addGrayBGView
@@ -268,44 +359,54 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    EventItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    BOOL display_items = NO;
-    if (cell == nil) {
-        cell = [[EventItemCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    }
-    
-    cell = [self ItemCellfromCell:cell];
-    
-    EventItem *item = [eventItemsArray objectAtIndex:indexPath.row];
-    
-    [cell setItem:item];
-    EventMemberCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
-    if (cell2 == nil) {
-        cell2 = [[EventMemberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell2"];
-        
-    }
-    
 
-    
-    [cell2 setMember:nil];
+    BOOL display_items = NO;
+
     
     if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
 //        cellText = [eventItemsArray objectAtIndex:indexPath.row];
+        EventItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        
         display_items = YES;
+        
+        if (cell == nil) {
+            cell = [[EventItemCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        }
+        
+        cell = [self ItemCellfromCell:cell];
+        
+        EventItem *item = [eventItemsArray objectAtIndex:indexPath.row];
+        
+        [cell setItem:item];
+        
+        return cell;
 
     } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
 //        cellText = [eventMembersArray objectAtIndex:indexPath.row];
         display_items = NO;
+        EventMemberCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+        if (cell2 == nil) {
+            cell2 = [[EventMemberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell2"];
+            
+        }
+        
+        
+        EventMember *eventMem = [eventMembersArray objectAtIndex:indexPath.row];
+        NSLog(@"eventMem is %@", eventMem);
+        [cell2 setMember:eventMem];
+        
+        return cell2;
         
     }
     
-    if (display_items) {
-        return cell;
-    } else {
-        return cell2;
-    }
+//    if (display_items) {
+//        return cell;
+//    } else {
+//        return cell2;
+//    }
+    UITableViewCell *othaCell = [[UITableViewCell alloc] init];
 
-    return cell;
+    return othaCell;
 }
 
 // EVENT ITEM CELL 

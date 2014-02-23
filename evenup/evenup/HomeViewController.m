@@ -64,14 +64,14 @@
     
     amountOwedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width/2, 30)];
     amountOwedValueLabel.text = @"$0";
-    amountOwedValueLabel.textColor = [Utils Color2];
+    amountOwedValueLabel.textColor = [Utils Color1];
     amountOwedValueLabel.font = [UIFont systemFontOfSize:28.0f];
     amountOwedValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountOwedValueLabel];
     
     amountDueValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 50, self.view.frame.size.width/2, 30)];
     amountDueValueLabel.text = @"$0";
-    amountDueValueLabel.textColor = [Utils Color1];
+    amountDueValueLabel.textColor = [Utils Color5];
     amountDueValueLabel.font = [UIFont systemFontOfSize:28.0f];
     amountDueValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountDueValueLabel];

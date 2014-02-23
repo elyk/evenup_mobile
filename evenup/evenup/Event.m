@@ -29,21 +29,7 @@
         
         self.membersCount = [NSString stringWithFormat:@"%i", self.event_members.count];
         
-        
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        
-        //The Z at the end of your string represents Zulu which is UTC
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        [dateFormatter setDateFormat:@"YYYY-MM-DD'T'HH:mm:ss'Z'"];
-        NSLog(@"creatd date %@", self.created_date);
-        NSString* newTime = [dateFormatter stringFromDate:self.created_date];
-        NSLog(@"new time %@", newTime);
-        
-        //Add the following line to display the time in the local time zone
-        [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-        [dateFormatter setDateFormat:@"M/d/yy 'at' h:mma"];
-        self.eventDate = newTime;
-        
+        self.eventDate = @"Sunday";
         
         if (self.is_active) {
             self.status = @"OPEN";
@@ -55,6 +41,8 @@
     
     return self;
 }
+
+
 
 @end
 

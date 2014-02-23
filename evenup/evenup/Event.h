@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSString *event_id;
 @property BOOL is_active;
 @property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSDate *created_date;
+@property (nonatomic, strong) NSString *created_date;
 @property (nonatomic, strong) NSMutableArray *event_members;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;

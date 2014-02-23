@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27D5ECAB18BA05D3009C9787 /* EventMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5ECAA18BA05D3009C9787 /* EventMemberCell.m */; };
 		27D5ECAE18BA05E6009C9787 /* EventMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5ECAD18BA05E6009C9787 /* EventMember.m */; };
+		27D5ECB218BA3B32009C9787 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5ECB118BA3B32009C9787 /* User.m */; };
 		27EB2A8218B8160200C2D851 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8118B8160200C2D851 /* Foundation.framework */; };
 		27EB2A8418B8160200C2D851 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8318B8160200C2D851 /* CoreGraphics.framework */; };
 		27EB2A8618B8160200C2D851 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8518B8160200C2D851 /* UIKit.framework */; };
@@ -142,6 +143,8 @@
 		27D5ECAA18BA05D3009C9787 /* EventMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMemberCell.m; sourceTree = "<group>"; };
 		27D5ECAC18BA05E6009C9787 /* EventMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMember.h; sourceTree = "<group>"; };
 		27D5ECAD18BA05E6009C9787 /* EventMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMember.m; sourceTree = "<group>"; };
+		27D5ECB018BA3B32009C9787 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		27D5ECB118BA3B32009C9787 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		27EB2A7E18B8160200C2D851 /* evenup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = evenup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EB2A8118B8160200C2D851 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EB2A8318B8160200C2D851 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -549,6 +552,8 @@
 				27EB2D3618B9881E00C2D851 /* EventItem.m */,
 				27D5ECAC18BA05E6009C9787 /* EventMember.h */,
 				27D5ECAD18BA05E6009C9787 /* EventMember.m */,
+				27D5ECB018BA3B32009C9787 /* User.h */,
+				27D5ECB118BA3B32009C9787 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1026,6 +1031,7 @@
 				27EB2C9B18B91E1300C2D851 /* Utils.m in Sources */,
 				27EB2B2F18B87F0300C2D851 /* AFURLResponseSerialization.m in Sources */,
 				27EB2B2918B87F0300C2D851 /* AFHTTPRequestOperationManager.m in Sources */,
+				27D5ECB218BA3B32009C9787 /* User.m in Sources */,
 				27EB2B2818B87F0300C2D851 /* AFHTTPRequestOperation.m in Sources */,
 				27EB2C9E18B91EE800C2D851 /* Settings.m in Sources */,
 				27EB2B4F18B88B0B00C2D851 /* EventMemberViewController.m in Sources */,

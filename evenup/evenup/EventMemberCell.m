@@ -7,6 +7,7 @@
 //
 
 #import "EventMemberCell.h"
+#import "User.h"
 #import "Utils.h"
 @implementation EventMemberCell
 {
@@ -87,11 +88,17 @@
     return self;
 }
 
--(void)setMember:(EventMember *)evenMember
+-(void)setMember:(EventMember *)eventMember
 {
-    eventMemberTitle.text = @"Mary Joe";
+    NSLog(@"event Member is %@", eventMember);
+    if (eventMember.user != nil) {
+    eventMemberTitle.text = [NSString stringWithFormat:@"%@ %@", eventMember.user.first_name, eventMember.user.last_name];
+    } else {
+        eventMemberTitle.text = eventMember.name;
+    }
+
     //    eventItem.title;
-    eventPurchasedCount.text = [NSString stringWithFormat:@"10"];
+    eventPurchasedCount.text = eventMember.purchased_items_count;
     //    eventItem.event_payer
     eventSpentLabel.text = @"$45.24";
     //    eventItem.event_price;
