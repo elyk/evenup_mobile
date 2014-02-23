@@ -23,18 +23,22 @@
 #define SIGN_UP_URL @"signup/"
 #define AUTH_TOKEN_URL @"api-token-auth/"
 
-//EVENTS
+#define STRIPE_URL_PATH @"accounts/stripe/"
 
+//EVENTS
 #define EVENTS_URL @"events/"
+#define EVENT_DETAILS_URL @"events/%@/"
 #define EVENT_BILL_ITEMS_URL @"events/%@/billitems/"
 #define EVENT_BILL_MEMBERS_URL @"events/%@/eventmembers/"
 #define EVENT_BILL_SPLITTERS_URL @"events/%@/billitems/%@/billsplits/"
+#define EVENT_BILL_SPLITTERS_DELETE_URL @"events/%@/billitems/%@/billsplits/delete"
 @interface Server : NSObject
 {
     
 }
 
 +(Server *)sharedServer;
++(NSArray *)getAllContacts;
 @property(nonatomic, strong) NSString *authToken;
 -(void)removeAuthTok;
 -(void)LoadAuthToken;

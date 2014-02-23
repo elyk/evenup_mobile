@@ -105,7 +105,7 @@
 
 -(void)setAsSplit
 {
-    self.contentView.backgroundColor =[UIColor colorWithRed:16/255.0f green:181/255.0f blue:0/255.0f alpha:.1f];
+    self.backgroundColor =[UIColor colorWithRed:16/255.0f green:181/255.0f blue:0/255.0f alpha:.1f];
     [checkBoxLabel setHidden:NO];
 }
 

@@ -39,7 +39,8 @@
     self.title = @"Log In";
     
     userNameCell = [[BaseCell alloc] initAsCellTextField];
-    userNameCell.textLabel.text = @"Number or email";
+    userNameCell.textLabel.text = @"Number";
+    userNameCell.textField.keyboardType = UIKeyboardTypeNumberPad;
     passWordCell = [[BaseCell alloc] initAsCellTextField];
     passWordCell.textLabel.text = @"Password";
     passWordCell.textField.secureTextEntry = YES;
@@ -52,7 +53,7 @@
     formTableView.scrollEnabled = NO;
     [self.view addSubview:formTableView];
     
-    logInButton = [[UIButton alloc] initWithFrame:CGRectMake(20, formTableView.frame.size.height+formTableView.frame.origin.y+30, self.view.frame.size.width-40, 20)];
+    logInButton = [[UIButton alloc] initWithFrame:CGRectMake(20, formTableView.frame.size.height+formTableView.frame.origin.y+30, self.view.frame.size.width-40, 40)];
     [logInButton setTitle:@"LOG IN" forState:UIControlStateNormal];
     [logInButton setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [logInButton addTarget:self action:@selector(logUserIn) forControlEvents:UIControlEventTouchUpInside];

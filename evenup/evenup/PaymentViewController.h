@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface PaymentViewController : BaseViewController
-
+-(id)initWithAmount:(NSString *)amount;
 @end

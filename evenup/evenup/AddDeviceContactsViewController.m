@@ -170,8 +170,11 @@
 -(void)finishedAddingContacts
 {
 
-    [self.delegate AddDeviceViewController:self selectedContacts:self.selectedContacts];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [self.delegate AddDeviceViewController:self selectedContacts:self.selectedContacts];
+        
+    }];
 }
 
 @end

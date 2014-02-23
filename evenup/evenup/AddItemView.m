@@ -93,7 +93,7 @@
 #pragma mark -- Server responses
 -(void)newEventItemSuccessResponse:(NSObject *)response
 {
-    NSLog(@"response is %@", response);
+    NSLog(@"response for bill items  is %@", response);
     [self.delegate AddItemView:self didAddItem:nil];
     
 }

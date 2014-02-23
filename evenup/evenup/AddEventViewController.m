@@ -52,12 +52,12 @@
     
     [self.view addSubview:addEventTableForm];
     
-    NSArray *contacts = [Utils getAllContacts];
+    NSArray *contacts = [Server getAllContacts];
     addDeviceContactsVc = [[AddDeviceContactsViewController alloc] initWithContacts:contacts];
     addDeviceContactsVc.delegate = self;
     addDeviceContactsVc.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-addEventTableForm.frame.size.height);
     
-    [self.view addSubview:addDeviceContactsVc.view];
+//    [self.view addSubview:addDeviceContactsVc.view];
     
     
 }
@@ -160,6 +160,8 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 
 @end

@@ -17,7 +17,10 @@
 #import "EventMemberCell.h"
 #import "AddDeviceContactsViewController.h"
 #import "ContactsData.h"
-@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate, AddItemViewDelegate, AddDeviceContactsViewControllerDelegate>
+#import <MessageUI/MessageUI.h>
+#import "EventCompleteViewController.h"
+#import "EventCompleteViewController.h"
+@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate, AddItemViewDelegate, AddDeviceContactsViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 {
     UITableView *eventTable;
     UISegmentedControl *toggleSegment;
@@ -33,6 +36,8 @@
     UITapGestureRecognizer *tapGesture;
     
     Event *_event;
+    
+    NSMutableArray *_special_contacts;
 
 }
 @end
@@ -55,8 +60,10 @@
 	// Do any additional setup after loading the view.
     self.title = _event.title;
     
+    
 //    TODO -- only an admin should see this
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showAdminView)];
+    
     toggleSegment = [[UISegmentedControl alloc] initWithItems:@[@"Items", @"Members"]];
     toggleSegment.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
     [toggleSegment addTarget:self action:@selector(didChangeSegmentValue:) forControlEvents:UIControlEventValueChanged];
@@ -102,12 +109,13 @@
     [super viewWillAppear:animated];
     [self fetchBills];
     [self fetchMembers];
+    
+
 }
 
 -(void)fetchBills
 {
     
-
     NSString *url = [NSString stringWithFormat:EVENT_BILL_ITEMS_URL, _event.event_id];
 
     [[Server sharedServer] requestOfType:GET_REQUEST forUrl:url params:nil target:self successMethod:@selector(billItemSuccessResponse:) errorMethod:@selector(billItemsErrorResponse:)];
@@ -175,7 +183,7 @@
 
 -(void)showAdminView
 {
-    [self showModalViewController:[[EventAdminViewController alloc] init]];
+    [self showModalViewController:[[EventAdminViewController alloc] initWithEvent:_event]];
 }
 
 -(void)didChangeSegmentValue:(UISegmentedControl *)sender
@@ -256,7 +264,7 @@
 #pragma mark -- add device stuff
 -(void)addMemberToEvent
 {
-    AddDeviceContactsViewController *addDeviceVc = [[AddDeviceContactsViewController alloc] initWithContacts:[Utils getAllContacts]];
+    AddDeviceContactsViewController *addDeviceVc = [[AddDeviceContactsViewController alloc] initWithContacts:[Server getAllContacts]];
     
 //    [self presentViewController:addDeviceVc animated:YES completion:nil];
     [self showModalViewController:addDeviceVc];
@@ -266,9 +274,53 @@
 -(void)AddDeviceViewController:(AddDeviceContactsViewController *) viewController selectedContacts:(NSMutableArray *)contacts
 {
 
-    [self createEventContactsWithContacts:contacts];
-
+    _special_contacts = contacts;
+    NSMutableArray *recipents = [[NSMutableArray alloc] init];
     
+    for (ContactsData *selectedContact in contacts) {
+        
+        NSString *selectedPhoneNumber = [selectedContact.phoneNumbers objectAtIndex:0];
+        [recipents addObject:selectedPhoneNumber];
+        
+        
+    }
+    
+    NSLog(@"recipents are %@", recipents);
+    
+    NSLog(@"the selected contacts %@", contacts);
+    NSString *eventMessage = [NSString stringWithFormat:@"Hi all. please join my EvenUp to %@", _event.title];
+    [self sendTextMessage:eventMessage toRecipents:[NSArray arrayWithArray:recipents]];
+    
+    
+}
+
+-(void)sendTextMessage:(NSString *)message toRecipents:(NSArray *)array
+{
+    
+    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        controller.body = message;
+        controller.recipients = array;
+        controller.messageComposeDelegate = self;
+//        [self.navigationController presentViewController:controller animated:YES completion:nil];
+        [self.navigationController presentModalViewController:controller animated:YES];
+//        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    NSLog(@"result is %u", result);
+    if (result==MessageComposeResultCancelled) {
+        
+    } else if (result==MessageComposeResultSent) {
+        //        create the event members!
+        [self createEventContactsWithContacts:_special_contacts];
+        
+    }
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)createEventContactsWithContacts:(NSMutableArray *)contacts
@@ -287,6 +339,7 @@
             NSString *url = [NSString stringWithFormat:EVENT_BILL_MEMBERS_URL, _event.event_id];
             
             [[Server sharedServer] requestOfType:POST_REQUEST forUrl:url params:paramsDict target:self successMethod:@selector(addContactsSuccessResponse:) errorMethod:@selector(addContactsErrorResponse:)];
+            _special_contacts = nil;
         };
         
         
@@ -375,6 +428,7 @@
         EventItem *item = [eventItemsArray objectAtIndex:indexPath.row];
         [cell setItem:item];
         cell = [self ItemCellfromCell:cell WithItem:item];
+
         
         return cell;
 
@@ -485,7 +539,7 @@
         NSLog(@"Did remove self from item");
         [cell swipeToOriginWithCompletion:^{
             NSLog(@"Cell swiped back!");
-            NSString *url = [NSString stringWithFormat:EVENT_BILL_SPLITTERS_URL, _event.event_id, event_item.item_id];
+            NSString *url = [NSString stringWithFormat:EVENT_BILL_SPLITTERS_DELETE_URL, _event.event_id, event_item.item_id];
             
             [[Server sharedServer] requestOfType:DELETE_REQUEST forUrl:url params:nil target:self successMethod:@selector(addAsSplitterSuccessResponse:) errorMethod:@selector(AddAsSplitterErrorResponse:)];
             

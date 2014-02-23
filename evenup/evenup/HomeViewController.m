@@ -11,6 +11,7 @@
 #import "EventViewController.h"
 #import "Event.h"
 #import "MainEventCell.h"
+#import "EventCompleteViewController.h"
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *eventsTable;
@@ -100,6 +101,7 @@
     [self.view addSubview:eventsTable];
 //    [self fetchEvents];
 //    [self loadEvents];
+    [Server getAllContacts];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -117,6 +119,7 @@
 
 -(void)eventsSuccessResponse:(NSObject *)response
 {
+    NSLog(@"response is %@", response);
 
     NSMutableArray *array = [response valueForKey:@"results"];
     NSMutableArray *newArray = [[NSMutableArray alloc] init];
@@ -191,8 +194,17 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     Event *event = [eventsArray objectAtIndex:indexPath.row];
-    EventViewController *eventVc = [[EventViewController alloc] initWithEvent:event];
-    [self.navigationController pushViewController:eventVc animated:YES];
+    
+    if (!event.is_active) {
+        EventCompleteViewController *eventCompleteVc = [[EventCompleteViewController alloc] initWithEvent:event];
+        [self.navigationController pushViewController:eventCompleteVc animated:YES];
+    } else {
+        EventViewController *eventVc = [[EventViewController alloc] initWithEvent:event];
+        [self.navigationController pushViewController:eventVc animated:YES];
+    }
+    
+    
+
 
 }
 

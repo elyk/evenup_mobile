@@ -97,8 +97,7 @@
     eventTitleLabel.text = event.title;
     eventMembersCountLabel.text = event.membersCount;
     eventDateLabel.text = event.eventDate;
-    eventOwedLabel.text = [NSString stringWithFormat:@"$%@", event.amountOwed];
-    eventStatusLabel.text = event.status;
+    eventOwedLabel.text = [NSString stringWithFormat:@"$0"];    eventStatusLabel.text = event.status;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

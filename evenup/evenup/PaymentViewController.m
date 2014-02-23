@@ -20,11 +20,23 @@
     BaseCell *CreditCardNumberCell;
     BaseCell *CreditCardMonthCell;
     BaseCell *CreditCardYearCell;
+    NSString *_amount;
 }
 @end
 
 @implementation PaymentViewController
 
+
+-(id)initWithAmount:(NSString *)amount
+{
+    self = [super init];
+    if (self) {
+        
+        _amount = amount;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -32,9 +44,16 @@
 	// Do any additional setup after loading the view.
     self.title = @"Payment Details";
     
-    [self setLeftMenuButton];
+//    [self setLeftMenuButton];
     
-    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width-40, 220) style:UITableViewStyleGrouped];
+    UILabel *amountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 50)];
+    amountLabel.textAlignment = NSTextAlignmentCenter;
+    amountLabel.textColor = [Utils Color3];
+    amountLabel.text = [NSString stringWithFormat:@"Charge: $%@", _amount];
+    
+    [self.view addSubview:amountLabel];
+    
+    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 80, self.view.frame.size.width-40, 220) style:UITableViewStyleGrouped];
     formTableView.backgroundColor = [UIColor clearColor];
     formTableView.dataSource = self;
     formTableView.delegate = self;
@@ -42,7 +61,7 @@
     [self.view addSubview:formTableView];
     
     saveButton = [[UIButton alloc] initWithFrame:CGRectMake(20, formTableView.frame.size.height+formTableView.frame.origin.y+10, self.view.frame.size.width-40, 20)];
-    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [saveButton setTitle:@"Send" forState:UIControlStateNormal];
     [saveButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(sendCreditCard) forControlEvents:UIControlEventTouchUpInside];
     
@@ -87,6 +106,13 @@
 -(void)sendStripeTokenToServer:(STPToken *)token
 {
     NSLog(@"stripe token back is %@", token);
+    
+    NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:token forKey:@"stripe_token"];
+    [paramsDict setObject:_amount forKey:@"amount"];
+    
+    [[Server sharedServer] requestOfType:POST_REQUEST forUrl:STRIPE_URL_PATH params:paramsDict target:self successMethod:@selector(newEventsSuccessResponse:) errorMethod:@selector(newEventsErrorResponse:)];
+    
 }
 
 #pragma mark -- Tableview datasource
@@ -113,6 +139,20 @@
     }
     formCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return formCell;
+}
+
+
+
+-(void)newEventsSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(void)newEventsErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 @end
