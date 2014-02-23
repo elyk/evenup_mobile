@@ -29,6 +29,7 @@
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [Utils Color3];
     
 
     

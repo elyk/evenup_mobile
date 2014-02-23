@@ -13,4 +13,9 @@
     
 }
 +(NSArray *)getAllContacts;
++ (UIColor *)Color1;
++ (UIColor *)Color2;
++ (UIColor *)Color3;
++ (UIColor *)Color4;
++ (UIColor *)Color5;
 @end

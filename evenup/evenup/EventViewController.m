@@ -58,26 +58,29 @@
     toggleSegment = [[UISegmentedControl alloc] initWithItems:@[@"Items", @"Members"]];
     toggleSegment.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 30);
     [toggleSegment addTarget:self action:@selector(didChangeSegmentValue:) forControlEvents:UIControlEventValueChanged];
+    toggleSegment.tintColor = [Utils Color4];
     toggleSegment.selectedSegmentIndex = 0;
 
     [self.view addSubview:toggleSegment];
     
+    addItem = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
     [addItem setTitle:@"Add Item +" forState:UIControlStateNormal];
-    [addItem setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+
+    [addItem setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [addItem addTarget:self action:@selector(addItemToEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addItem];
     
     addMember = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
     [addMember setTitle:@"Add Member +" forState:UIControlStateNormal];
-    [addMember setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [addMember setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [addMember addTarget:self action:@selector(addMemberToEvent) forControlEvents:UIControlEventTouchUpInside];
     [addMember setHidden:YES];
     [self.view addSubview:addMember];
     
     
     
-    eventTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 75, self.view.frame.size.width, 250) style:UITableViewStylePlain];
+    eventTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85) style:UITableViewStylePlain];
     eventTable.dataSource = self;
     eventTable.delegate = self;
     
@@ -292,7 +295,6 @@
             EventItemCell *cellSplit = cell;
             [cellSplit setAsSplit];
         }];
-        
         
     }];
     
