@@ -120,6 +120,8 @@
 		27EB2D2C18B95A5800C2D851 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */; };
 		27EB2D2D18B95A5800C2D851 /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */; };
 		27EB2D3018B977A300C2D851 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2D2F18B977A300C2D851 /* MessageUI.framework */; };
+		27EB2D3418B9876C00C2D851 /* EventItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D3318B9876C00C2D851 /* EventItemCell.m */; };
+		27EB2D3718B9881E00C2D851 /* EventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D3618B9881E00C2D851 /* EventItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +320,10 @@
 		27EB2D2018B95A5800C2D851 /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
 		27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
 		27EB2D2F18B977A300C2D851 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		27EB2D3218B9876C00C2D851 /* EventItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventItemCell.h; sourceTree = "<group>"; };
+		27EB2D3318B9876C00C2D851 /* EventItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventItemCell.m; sourceTree = "<group>"; };
+		27EB2D3518B9881E00C2D851 /* EventItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventItem.h; sourceTree = "<group>"; };
+		27EB2D3618B9881E00C2D851 /* EventItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +520,8 @@
 		27EB2AD518B824D400C2D851 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2D3218B9876C00C2D851 /* EventItemCell.h */,
+				27EB2D3318B9876C00C2D851 /* EventItemCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -525,6 +533,8 @@
 				27EB2CDC18B9574400C2D851 /* ContactsData.m */,
 				27EB2AD718B8263D00C2D851 /* Event.h */,
 				27EB2AD818B8263D00C2D851 /* Event.m */,
+				27EB2D3518B9881E00C2D851 /* EventItem.h */,
+				27EB2D3618B9881E00C2D851 /* EventItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -983,6 +993,7 @@
 				27EB2B4718B87F0C00C2D851 /* UIImageView+AFNetworking.m in Sources */,
 				27EB2B0318B8454300C2D851 /* PastEventsViewController.m in Sources */,
 				27EB2ACB18B81E8F00C2D851 /* EventViewController.m in Sources */,
+				27EB2D3418B9876C00C2D851 /* EventItemCell.m in Sources */,
 				27EB2B4418B87F0C00C2D851 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				27EB2ACE18B81E9B00C2D851 /* LoginViewController.m in Sources */,
 				27EB2AF118B835E900C2D851 /* Server.m in Sources */,
@@ -996,6 +1007,7 @@
 				27EB2B4F18B88B0B00C2D851 /* EventMemberViewController.m in Sources */,
 				27EB2B0918B84CA800C2D851 /* BaseCell.m in Sources */,
 				27EB2AC618B8172F00C2D851 /* SideViewController.m in Sources */,
+				27EB2D3718B9881E00C2D851 /* EventItem.m in Sources */,
 				27EB2A8E18B8160200C2D851 /* main.m in Sources */,
 				27EB2AB818B8167F00C2D851 /* HomeViewController.m in Sources */,
 				27EB2AC118B8171B00C2D851 /* IISideController.m in Sources */,

@@ -64,14 +64,14 @@
     
     amountOwedValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width/2, 30)];
     amountOwedValueLabel.text = @"$0";
-    amountOwedValueLabel.textColor = [UIColor greenColor];
+    amountOwedValueLabel.textColor = [UIColor colorWithRed:77/255.0f green:138/255.0f blue:0/255.0f alpha:1.0f];
     amountOwedValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
     amountOwedValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountOwedValueLabel];
     
     amountDueValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 50, self.view.frame.size.width/2, 30)];
     amountDueValueLabel.text = @"$0";
-    amountDueValueLabel.textColor = [UIColor redColor];
+    amountDueValueLabel.textColor = [UIColor colorWithRed:214/255.0f green:0/255.0f blue:0/255.0f alpha:1.0f];
     amountDueValueLabel.font = [UIFont boldSystemFontOfSize:28.0f];
     amountDueValueLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:amountDueValueLabel];
@@ -83,6 +83,15 @@
     openEventsLabel.font = [UIFont boldSystemFontOfSize:10.0f];
     openEventsLabel.textColor = [UIColor lightGrayColor];
     [self.view addSubview:openEventsLabel];
+    
+    UIView *lineViewLeft = [[UIView alloc] initWithFrame:CGRectMake(20, openEventsLabel.frame.size.height/2, 80, .5)];
+    lineViewLeft.backgroundColor = [UIColor lightGrayColor];
+    [openEventsLabel addSubview:lineViewLeft];
+
+    UIView *lineViewRight = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width-20-80, openEventsLabel.frame.size.height/2, 80, .5)];
+    lineViewRight.backgroundColor = [UIColor lightGrayColor];
+    [openEventsLabel addSubview:lineViewRight];
+    
     
     
     eventsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];

@@ -67,7 +67,7 @@
         eventOwedLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 40, self.frame.size.width/2-30, 10)];
         eventOwedLabel.font = [UIFont boldSystemFontOfSize:12.0f];
         eventOwedLabel.textAlignment = NSTextAlignmentRight;
-        eventOwedLabel.textColor = [UIColor greenColor];
+        eventOwedLabel.textColor = [UIColor colorWithRed:77/255.0f green:138/255.0f blue:0/255.0f alpha:1.0f];
         [self.contentView addSubview:eventOwedLabel];
         
         
