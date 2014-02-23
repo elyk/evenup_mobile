@@ -12,6 +12,7 @@
 
 #define STRIPE_SETTINGS_KEY @"pk_test_rYhRKdREwHaMp6KoaveWVNsE"
 
+#define USER_TOKEN_KEY @"userToken"
 @interface Settings : NSObject
 
 @end

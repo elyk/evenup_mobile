@@ -13,6 +13,12 @@
     UITableView *formTableView;
     UIButton *SignUpButton;
 
+    
+    BaseCell *firstNameCell;
+    BaseCell *lastNameCell;
+    BaseCell *emailCell;
+    BaseCell *phoneCell;
+    BaseCell *passWordCell;
 }
 @end
 
@@ -24,7 +30,15 @@
     self.title = @"Sign Up";
     self.navigationController.navigationBarHidden = NO;
 	// Do any additional setup after loading the view.
-    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 5, self.view.frame.size.width-40, 260) style:UITableViewStyleGrouped];
+    
+    firstNameCell = [[BaseCell alloc] initAsCellTextField];
+    lastNameCell = [[BaseCell alloc] initAsCellTextField];
+    emailCell = [[BaseCell alloc] initAsCellTextField];
+    phoneCell = [[BaseCell alloc] initAsCellTextField];
+    passWordCell = [[BaseCell alloc] initAsCellTextField];
+    
+    
+    formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width-40, 260) style:UITableViewStyleGrouped];
     formTableView.backgroundColor = [UIColor clearColor];
     formTableView.dataSource = self;
     formTableView.delegate = self;
@@ -49,9 +63,29 @@
 
 -(void)signUserUp
 {
-    NSLog(@"got here!");
-    [self.delegate SignUpViewController:self didSignUpUser:YES];
+
+//    [self.delegate SignUpViewController:self didSignUpUser:YES];
+    NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:firstNameCell.textField.text forKey:@"first_name"];
+    [paramsDict setObject:lastNameCell.textField.text forKey:@"last_name"];
+    [paramsDict setObject:phoneCell.textField.text forKey:@"phone"];
+    [paramsDict setObject:emailCell.textField.text forKey:@"email"];
+    [paramsDict setObject:passWordCell.textField.text forKey:@"password"];
+    
+    [[Server sharedServer] requestOfType:POST_REQUEST forUrl:SIGN_UP_URL params:paramsDict target:self successMethod:@selector(signUserUpSuccessResponse:) errorMethod:@selector(signUserUpErrorResponse:)];
 }
+
+-(void)signUserUpSuccessResponse:(NSObject *)response
+{
+    NSLog(@"success response is %@", response);
+}
+
+-(void)signUserUpErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
+}
+
+
 
 #pragma mark -- Tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -68,22 +102,24 @@
         case 0:
             textLabel = @"First Name";
             textPlaceHolder = @"";
+            formCell = firstNameCell;
             break;
         case 1:
             textLabel = @"Last Name";
             textPlaceHolder = @"";
+            formCell = lastNameCell;
             break;
         case 2:
             textLabel = @"Email";
-            textPlaceHolder = @"Email Address";
+            formCell = emailCell;
             break;
         case 3:
             textLabel = @"Phone";
-            textPlaceHolder = @"Mobile #";
+            formCell = phoneCell;
             break;
         case 4:
             textLabel = @"Password";
-            textPlaceHolder = @"";
+            formCell = passWordCell;
             formCell.textField.secureTextEntry = YES;
             break;
         default:

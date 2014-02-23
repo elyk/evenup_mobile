@@ -24,12 +24,20 @@
 {
     NSString *URL = [NSString stringWithFormat:@"%@%@", BASE_URL, url];
     
-//    TODO -- do a check here for user params
-    
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSLog(@"auth token is %@", [self authToken]);
+//    [manager.requestSerializer setAuthorizationHeaderFieldWithToken:[self authToken]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:[self authToken] password:nil];
+    
+    //    incase isn't sent over'
+    if (params == nil) {
+        params = [[NSMutableDictionary alloc] init];
+    }
+    
+
     
     if (request_type==GET_REQUEST) {
+        NSLog(@"request header is %@", manager.requestSerializer.HTTPRequestHeaders);
         [manager GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [target performSelectorInBackground:SuccessMethod withObject:responseObject];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -58,6 +66,34 @@
         
     }
 
+    
+}
+
+-(void) authLoginRequest:(int)request_type forUrl:(NSString *)url params:(NSMutableDictionary *)params target:(id)target successMethod:(SEL)SuccessMethod errorMethod:(SEL)errorMethod
+{
+    NSString *URL = [NSString stringWithFormat:@"%@%@", BASE_URL, url];
+    
+    //    TODO -- do a check here for user params
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    if (request_type==POST_REQUEST) {
+        [manager POST:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [target performSelectorInBackground:SuccessMethod withObject:responseObject];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [target performSelectorInBackground:errorMethod withObject:error];
+        }];
+        
+    }
+}
+
+-(NSString *)authToken
+{
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:USER_TOKEN_KEY];
+    
+    return savedValue;
     
 }
 

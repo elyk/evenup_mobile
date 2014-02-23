@@ -122,6 +122,7 @@
 		27EB2D3018B977A300C2D851 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2D2F18B977A300C2D851 /* MessageUI.framework */; };
 		27EB2D3418B9876C00C2D851 /* EventItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D3318B9876C00C2D851 /* EventItemCell.m */; };
 		27EB2D3718B9881E00C2D851 /* EventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D3618B9881E00C2D851 /* EventItem.m */; };
+		27EB2D3B18B9D24C00C2D851 /* MCSwipeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D3A18B9D24B00C2D851 /* MCSwipeTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -324,6 +325,8 @@
 		27EB2D3318B9876C00C2D851 /* EventItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventItemCell.m; sourceTree = "<group>"; };
 		27EB2D3518B9881E00C2D851 /* EventItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventItem.h; sourceTree = "<group>"; };
 		27EB2D3618B9881E00C2D851 /* EventItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventItem.m; sourceTree = "<group>"; };
+		27EB2D3918B9D24B00C2D851 /* MCSwipeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSwipeTableViewCell.h; sourceTree = "<group>"; };
+		27EB2D3A18B9D24B00C2D851 /* MCSwipeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSwipeTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +487,7 @@
 		27EB2AB918B816E600C2D851 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2D3818B9D24B00C2D851 /* MCSwipeTableViewCell */,
 				27EB2D0F18B95A5800C2D851 /* ContactPicker */,
 				27EB2BF518B890D100C2D851 /* Stripe */,
 				27EB2B3118B87F0C00C2D851 /* UIKit+AFNetworking */,
@@ -837,6 +841,15 @@
 			path = ContactPicker;
 			sourceTree = "<group>";
 		};
+		27EB2D3818B9D24B00C2D851 /* MCSwipeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				27EB2D3918B9D24B00C2D851 /* MCSwipeTableViewCell.h */,
+				27EB2D3A18B9D24B00C2D851 /* MCSwipeTableViewCell.m */,
+			);
+			path = MCSwipeTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1022,6 +1035,7 @@
 				27EB2AFC18B8433300C2D851 /* TransactionsViewController.m in Sources */,
 				27EB2B1318B87BAF00C2D851 /* EventAdminViewController.m in Sources */,
 				27EB2B4318B87F0C00C2D851 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				27EB2D3B18B9D24C00C2D851 /* MCSwipeTableViewCell.m in Sources */,
 				27EB2AD118B81EA700C2D851 /* SignUpViewController.m in Sources */,
 				27EB2C6618B890D200C2D851 /* PKUSAddressZip.m in Sources */,
 				27EB2AC218B8171B00C2D851 /* IIViewDeckController.m in Sources */,

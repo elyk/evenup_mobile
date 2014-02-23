@@ -78,11 +78,15 @@
 -(void)createNewEvent
 {
 
-//    NSArray *contacts = [Utils getAllContacts];
-//    AddDeviceContactsViewController *addDeviceContactsVc = [[AddDeviceContactsViewController alloc] initWithContacts:contacts];
-//    addDeviceContactsVc.delegate = self;
-//    [self showModalViewController:addDeviceContactsVc];
+    NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:eventTitleName.textField.text forKey:@"title"];
     
+    [[Server sharedServer] requestOfType:POST_REQUEST forUrl:EVENTS_URL params:paramsDict target:self successMethod:@selector(newEventsSuccessResponse:) errorMethod:@selector(newEventsErrorResponse:)];
+
+}
+
+-(void)getSelectedContacts
+{
     NSMutableArray *recipents = [[NSMutableArray alloc] init];
     
     for (ContactsData *selectedContact in addDeviceContactsVc.selectedContacts) {
@@ -98,6 +102,20 @@
     NSLog(@"the selected contacts %@", addDeviceContactsVc.selectedContacts);
     NSString *eventMessage = [NSString stringWithFormat:@"Hi all. please join my EvenUp to %@", eventTitleName.textField.text];
     [self sendTextMessage:eventMessage toRecipents:[NSArray arrayWithArray:recipents]];
+    
+}
+
+
+
+-(void)newEventsSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+    
+}
+
+-(void)newEventsErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 #pragma mark -- Tableview delegate

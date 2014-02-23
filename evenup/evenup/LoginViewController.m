@@ -15,6 +15,10 @@
     UIButton *logInButton;
     UIButton *signUpButton;
     UILabel *logoLabel;
+    
+    BaseCell *userNameCell;
+    BaseCell *passWordCell;
+    
 }
 @end
 
@@ -33,6 +37,13 @@
     
 
     self.title = @"Log In";
+    
+    userNameCell = [[BaseCell alloc] initAsCellTextField];
+    userNameCell.textLabel.text = @"Number or email";
+    passWordCell = [[BaseCell alloc] initAsCellTextField];
+    passWordCell.textLabel.text = @"Password";
+    passWordCell.textField.secureTextEntry = YES;
+    
 	// Do any additional setup after loading the view.
     formTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 120, self.view.frame.size.width-40, 140) style:UITableViewStyleGrouped];
     formTableView.backgroundColor = [UIColor clearColor];
@@ -71,7 +82,30 @@
 -(void)logUserIn
 {
 
+    //    [self.delegate SignUpViewController:self didSignUpUser:YES];
+    [self.view endEditing:YES];
+    NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+    [paramsDict setObject:userNameCell.textField.text forKey:@"username"];
+    [paramsDict setObject:passWordCell.textField.text forKey:@"password"];
+    
+    [[Server sharedServer] authLoginRequest:POST_REQUEST forUrl:AUTH_TOKEN_URL params:paramsDict target:self successMethod:@selector(logInUserUpSuccessResponse:) errorMethod:@selector(logInUserUpErrorResponse:)];
+}
+
+
+-(void)logInUserUpSuccessResponse:(NSObject *)response
+{
+    NSLog(@"success response is %@", response);
+    NSString *token = [response valueForKey:@"token"];
+    
+    [[NSUserDefaults standardUserDefaults]
+     setObject:token forKey:USER_TOKEN_KEY];
+    
     [self.delegate LoginViewController:self didLogUserIn:YES];
+}
+
+-(void)logInUserUpErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 -(void)pushSignUp
@@ -97,22 +131,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BaseCell *formCell = [[BaseCell alloc] initAsCellTextField];
-    NSString *textLabel = nil;
-    NSString *textPlaceHolder = nil;
     switch (indexPath.row) {
         case 0:
-            textLabel = @"Username";
-            textPlaceHolder = @"Email or Number";
+            formCell = userNameCell;
             break;
         case 1:
-            textLabel = @"Password";
-            textPlaceHolder = @"Enter Password";
+            formCell = passWordCell;
         default:
             break;
     }
     formCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    formCell.textLabel.text = textLabel;
-    formCell.textField.placeholder = textPlaceHolder;
     return formCell;
 }
 

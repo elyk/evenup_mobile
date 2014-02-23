@@ -12,8 +12,10 @@
 #import "EventAdminViewController.h"
 #import "EventItemViewController.h"
 #import "EventMemberViewController.h"
-
-@interface EventViewController () <UITableViewDataSource, UITableViewDelegate>
+#import "Event.h"
+#import "EventItem.h"
+#import "EventItemCell.h"
+@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate>
 {
     UITableView *eventTable;
     UISegmentedControl *toggleSegment;
@@ -27,11 +29,23 @@
     UIView *darkBGView;
     
     UITapGestureRecognizer *tapGesture;
+    
+    Event *_event;
 
 }
 @end
 
 @implementation EventViewController
+
+-(id)initWithEvent:(Event *)event
+{
+    self = [super init];
+    if (self){
+        _event = event;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -202,9 +216,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    EventItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell = [[EventItemCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
     NSString *cellText = nil;
     
@@ -215,8 +230,93 @@
     }
     
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = cellText;
     cell.textLabel.textColor = [UIColor blackColor];
+    [cell setItem:nil];
+    
+    
+    // Configuring the views and colors.
+    UILabel *splitItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
+    splitItem.text = @"Split Item";
+    splitItem.textColor = [UIColor lightGrayColor];
+    splitItem.font = [UIFont boldSystemFontOfSize:18.0];
+
+    UILabel *splittingItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
+    splittingItem.text = @"Splitting Item!";
+    splittingItem.textColor = [UIColor darkGrayColor];
+    splittingItem.font = [UIFont boldSystemFontOfSize:18.0];
+  
+    
+    UILabel *NotsplitItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
+    NotsplitItem.text = @"Removing Split";
+    NotsplitItem.font = [UIFont boldSystemFontOfSize:18.0];
+    NotsplitItem.textColor = [UIColor lightGrayColor];
+    NotsplitItem.textAlignment = NSTextAlignmentRight;
+    
+    UILabel *NotsplittingItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
+    NotsplittingItem.text = @"Removing Split!";
+    NotsplittingItem.font = [UIFont boldSystemFontOfSize:18.0];
+    NotsplittingItem.textColor = [UIColor darkGrayColor];
+    NotsplittingItem.textAlignment = NSTextAlignmentRight;
+    
+    
+    
+    
+
+    // Starting to add
+    UIColor *greenColor = [UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0];
+    
+    // ADDED
+    UIColor *darkGreenColor = [UIColor colorWithRed:51/255.0f green:147/255.0f blue:0/255.0f alpha:1.0f];
+    
+
+    UIColor *redColor = [UIColor colorWithRed:252/255.0f green:35/255.0f blue:35/255.0f alpha:1.0f];
+    
+
+    UIColor *darkRedColor = [UIColor colorWithRed:173/255.0f green:24/255.0f blue:24/255.0f alpha:1.0f];
+    
+    // Setting the default inactive state color to the tableView background color.
+//    [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
+    
+
+    
+    // Adding gestures per state basis.
+    [cell setSwipeGestureWithView:splitItem color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        NSLog(@"Did swipe \"Checkmark\" cell");
+    }];
+    
+    [cell setSwipeGestureWithView:splittingItem color:darkGreenColor mode:MCSwipeTableViewCellModeExit state:MCSwipeTableViewCellState2 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        NSLog(@"Did add self to item");
+        NSLog(@"Did remove self from item");
+        [cell swipeToOriginWithCompletion:^{
+            NSLog(@"Cell swiped back!");
+            EventItemCell *cellSplit = cell;
+            [cellSplit setAsSplit];
+        }];
+        
+        
+    }];
+    
+    [cell setSwipeGestureWithView:NotsplitItem color:redColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        NSLog(@"Did swipe \"Clock\" cell");
+    }];
+    
+    [cell setSwipeGestureWithView:NotsplittingItem color:darkRedColor mode:MCSwipeTableViewCellModeExit state:MCSwipeTableViewCellState4 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        NSLog(@"Did remove self from item");
+        [cell swipeToOriginWithCompletion:^{
+            NSLog(@"Cell swiped back!");
+            EventItemCell *cellSplit = cell;
+            [cellSplit removeSetAsSplit];
+        }];
+        
+        
+    }];
+
+    
+    
+    
+    cell.delegate = self;
+    cell.firstTrigger = 0.2;
+    cell.secondTrigger = 0.7;
     return cell;
 }
 
@@ -230,7 +330,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    TODO -- check for indexpath
-    NSLog(@"here here");
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BaseViewController *pushedVc = nil;
     if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
         pushedVc = [[EventItemViewController alloc] init];
@@ -243,6 +343,27 @@
     [self.navigationController pushViewController:pushedVc animated:YES];
     
 }
+
+#pragma mark - MCSwipeTableViewCellDelegate
+
+// Called when the user starts swiping the cell.
+- (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell
+{
+    NSLog(@"heee");
+}
+
+// Called when the user ends swiping the cell.
+- (void)swipeTableViewCellDidEndSwiping:(MCSwipeTableViewCell *)cell
+{
+    NSLog(@"heee");
+
+}
+
+// Called during a swipe.
+//- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didSwipeWithPercentage:(CGFloat)percentage
+//{
+//    NSLog(@"heee");
+//}
 
 
 @end

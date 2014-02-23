@@ -98,8 +98,34 @@
     eventsTable.delegate = self;
     eventsTable.dataSource = self;
     [self.view addSubview:eventsTable];
-    
+//    [self fetchEvents];
     [self loadEvents];
+}
+
+-(void)fetchEvents
+{
+    [[Server sharedServer] requestOfType:GET_REQUEST forUrl:EVENTS_URL params:nil target:self successMethod:@selector(eventsSuccessResponse:) errorMethod:@selector(eventsErrorResponse:)];
+    
+}
+
+
+-(void)eventsSuccessResponse:(NSObject *)response
+{
+    NSLog(@"success response is %@", response);
+    NSMutableArray *array = [response valueForKey:@"response"];
+    for (NSDictionary *dict in array) {
+        Event *newEvent = [[Event alloc] initWithDictionary:dict];
+        [array addObject:newEvent];
+    }
+    
+    eventsArray = array;
+    [eventsTable reloadData];
+    
+}
+
+-(void)eventsErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 

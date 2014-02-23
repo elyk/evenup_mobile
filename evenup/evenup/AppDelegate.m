@@ -27,8 +27,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                           objectForKey:USER_TOKEN_KEY];
     
-    [self bringUserToLogin];
+//    if (savedValue == nil) {
+//        [self bringUserToLogin];
+//    } else {
+        [self bringUserToHome];
+//    }
+    
+
     
     return YES;
 }

@@ -30,6 +30,8 @@
 {
     UITableView *navTable;
     UILabel *nameLabel;
+    
+    UIButton *logOutButton;
 }
 @end
 
@@ -58,7 +60,7 @@
     
     [self.view addSubview:nameLabel];
     
-    navTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    navTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-100) style:UITableViewStylePlain];
     navTable.delegate = self;
     navTable.dataSource = self;
     navTable.backgroundColor = [UIColor clearColor];
@@ -68,6 +70,20 @@
     
     [self setNameLabel:@"Kyle Connors"];
     
+    
+    logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-100, self.view.frame.size.width, 100)];
+//    [logOutButton setBackgroundColor:[UIColor whiteColor]];
+    logOutButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    [logOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [logOutButton addTarget:self action:@selector(logUserOut) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:logOutButton];
+}
+
+-(void)logUserOut
+{
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_TOKEN_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_TOKEN_KEY];
+    NSLog(@"log out");
 }
 
 

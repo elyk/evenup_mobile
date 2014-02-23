@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IIViewDeckController.h"
+#import "Server.h"
 #import "Utils.h"
 @interface BaseViewController : UIViewController
 {

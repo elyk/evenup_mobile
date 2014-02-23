@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MCSwipeTableViewCell.h"
 #import "EventItem.h"
-@interface EventItemCell : UITableViewCell
+@interface EventItemCell : MCSwipeTableViewCell
 
 
 -(void)setItem:(EventItem *)eventItem;
+-(void)setAsSplit;
+-(void)removeSetAsSplit;
 @end
