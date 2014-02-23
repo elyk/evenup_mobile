@@ -91,10 +91,16 @@
     itemTitleLabel.text = eventItem.title;
 //    eventItem.title;
     eventMembersLabel.text = eventItem.bill_splitters;
-    eventOwnerLabel.text = [[NSString stringWithFormat:@"%@ PAID", eventItem.event_payer] uppercaseString];
+    eventOwnerLabel.text = [[NSString stringWithFormat:@"%@", eventItem.event_payer] uppercaseString];
 //    eventItem.event_payer
     eventPriceLabel.text = [NSString stringWithFormat:@"$%@", eventItem.event_price];
 //    eventItem.event_price;
+    
+    if (eventItem.is_splitting) {
+        [self setAsSplit];
+    } else {
+        [self removeSetAsSplit];
+    }
 }
 
 -(void)setAsSplit

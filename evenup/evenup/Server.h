@@ -12,6 +12,7 @@
 #define POST_REQUEST 2
 #define PATCH_REQUEST 3
 #define PUT_REQUEST 4
+#define DELETE_REQUEST 5
 
 //#define BASE_URL @"http://obscure-brushlands-4385.herokuapp.com/"
 #define BASE_URL @"http://10.60.20.234:8080/"
@@ -27,7 +28,7 @@
 #define EVENTS_URL @"events/"
 #define EVENT_BILL_ITEMS_URL @"events/%@/billitems/"
 #define EVENT_BILL_MEMBERS_URL @"events/%@/eventmembers/"
-
+#define EVENT_BILL_SPLITTERS_URL @"events/%@/billitems/%@/billsplits/"
 @interface Server : NSObject
 {
     

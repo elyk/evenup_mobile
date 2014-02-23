@@ -117,10 +117,10 @@
 
 -(void)eventsSuccessResponse:(NSObject *)response
 {
-    NSLog(@"success response is %@", response);
+
     NSMutableArray *array = [response valueForKey:@"results"];
     NSMutableArray *newArray = [[NSMutableArray alloc] init];
-    NSLog(@"array is %@", array);
+
     for (NSDictionary *dict in array) {
         Event *newEvent = [[Event alloc] initWithDictionary:dict];
         [newArray addObject:newEvent];

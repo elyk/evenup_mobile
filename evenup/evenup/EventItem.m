@@ -14,13 +14,14 @@
 {
     self = [super init];
     if (self) {
+        self.item_id = dictionary[@"id"];
         self.title = dictionary[@"description"];
         self.event_members = dictionary[@"event_members"];
         self.bill_splits = dictionary[@"bill_item_splits"];
         self.event_payer = dictionary[@"purchaser"];
         self.event_price = [NSString stringWithFormat:@"%i", [dictionary[@"cost"] intValue]];
         self.did_pay = [dictionary[@"did_pay"] boolValue];
-        
+        self.is_splitting = [[dictionary objectForKey:@"user_splitter"] boolValue];
         
         NSMutableString *membersString = [[NSMutableString alloc] init];
         for (NSMutableDictionary *dict in self.bill_splits) {

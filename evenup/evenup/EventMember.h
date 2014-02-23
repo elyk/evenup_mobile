@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *number;
 @property (nonatomic, strong) NSMutableArray *event_member_purchased_items;
 @property (nonatomic, strong) NSString *purchased_items_count;
+@property (nonatomic, strong) NSString *totalPurchase;
 @property (nonatomic, strong) User *user;
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 

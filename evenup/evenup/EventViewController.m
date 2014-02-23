@@ -152,12 +152,10 @@
 #pragma mark -- Server responses
 -(void)billMemberSuccessResponse:(NSObject *)response
 {
-    NSLog(@"response is %@", response);
     NSMutableArray *array = [response valueForKey:@"results"];
     NSMutableArray *newArray = [[NSMutableArray alloc] init];
     
     for (NSMutableDictionary *dict in array) {
-        NSLog(@"__dict is %@", dict);
         EventMember *member= [[EventMember alloc] initWithDictionary:dict];
         [newArray addObject:member];
     }
@@ -267,7 +265,7 @@
 
 -(void)AddDeviceViewController:(AddDeviceContactsViewController *) viewController selectedContacts:(NSMutableArray *)contacts
 {
-    NSLog(@"contacts are %@", contacts);
+
     [self createEventContactsWithContacts:contacts];
 
     
@@ -283,7 +281,7 @@
             NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
             
             [paramsDict setObject:name forKey:@"name"];
-            [paramsDict setObject:number forKey:@"number"];
+            [paramsDict setObject:number forKey:@"phone"];
             
             
             NSString *url = [NSString stringWithFormat:EVENT_BILL_MEMBERS_URL, _event.event_id];
@@ -304,6 +302,7 @@
 -(void)addContactsSuccessResponse:(NSObject *)response
 {
     NSLog(@"response is %@", response);
+    [self fetchMembers];
 
     
 }
@@ -372,12 +371,10 @@
         if (cell == nil) {
             cell = [[EventItemCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
         }
-        
-        cell = [self ItemCellfromCell:cell];
-        
+        cell.contentView.backgroundColor = [UIColor whiteColor];
         EventItem *item = [eventItemsArray objectAtIndex:indexPath.row];
-        
         [cell setItem:item];
+        cell = [self ItemCellfromCell:cell WithItem:item];
         
         return cell;
 
@@ -392,7 +389,7 @@
         
         
         EventMember *eventMem = [eventMembersArray objectAtIndex:indexPath.row];
-        NSLog(@"eventMem is %@", eventMem);
+
         [cell2 setMember:eventMem];
         
         return cell2;
@@ -410,7 +407,7 @@
 }
 
 // EVENT ITEM CELL 
--(EventItemCell *)ItemCellfromCell:(EventItemCell*) cell{
+-(EventItemCell *)ItemCellfromCell:(EventItemCell*) cell WithItem:(EventItem *) event_item{
 
     
     cell.backgroundColor = [UIColor clearColor];
@@ -469,6 +466,11 @@
         NSLog(@"Did remove self from item");
         [cell swipeToOriginWithCompletion:^{
             NSLog(@"Cell swiped back!");
+            
+            NSString *url = [NSString stringWithFormat:EVENT_BILL_SPLITTERS_URL, _event.event_id, event_item.item_id];
+            
+            [[Server sharedServer] requestOfType:POST_REQUEST forUrl:url params:nil target:self successMethod:@selector(addAsSplitterSuccessResponse:) errorMethod:@selector(AddAsSplitterErrorResponse:)];
+            
             EventItemCell *cellSplit = cell;
             [cellSplit setAsSplit];
         }];
@@ -483,6 +485,11 @@
         NSLog(@"Did remove self from item");
         [cell swipeToOriginWithCompletion:^{
             NSLog(@"Cell swiped back!");
+            NSString *url = [NSString stringWithFormat:EVENT_BILL_SPLITTERS_URL, _event.event_id, event_item.item_id];
+            
+            [[Server sharedServer] requestOfType:DELETE_REQUEST forUrl:url params:nil target:self successMethod:@selector(addAsSplitterSuccessResponse:) errorMethod:@selector(AddAsSplitterErrorResponse:)];
+            
+            
             EventItemCell *cellSplit = cell;
             [cellSplit removeSetAsSplit];
         }];
@@ -498,6 +505,19 @@
     cell.secondTrigger = 0.7;
     return cell;
     
+}
+
+-(void)addAsSplitterSuccessResponse:(NSObject *)response
+{
+    NSLog(@"response is %@", response);
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self fetchBills];
+    
+}
+
+-(void)AddAsSplitterErrorResponse:(NSObject *)response
+{
+    NSLog(@"error response is %@", response);
 }
 
 #pragma mark -- Tableview delegate
@@ -517,7 +537,6 @@
         pushedVc = [[EventMemberViewController alloc] init];
     }
     
-    NSLog(@"EHEH");
     
     [self.navigationController pushViewController:pushedVc animated:YES];
     
@@ -528,7 +547,7 @@
 // Called when the user starts swiping the cell.
 - (void)swipeTableViewCellDidStartSwiping:(MCSwipeTableViewCell *)cell
 {
-    NSLog(@"heee");
+    
 }
 
 // Called when the user ends swiping the cell.

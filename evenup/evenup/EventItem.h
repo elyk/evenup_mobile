@@ -11,12 +11,14 @@
 @interface EventItem : NSObject
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *item_id;
 @property (nonatomic, strong) NSMutableArray *event_members;
 @property (nonatomic, strong) NSMutableArray *bill_splits;
 @property (nonatomic, strong) NSString *event_payer;
 @property (nonatomic, strong) NSString *event_price;
 @property (nonatomic, strong) NSString *bill_splitters;
 @property BOOL did_pay;
+@property BOOL is_splitting;
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

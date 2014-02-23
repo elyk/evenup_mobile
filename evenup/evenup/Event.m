@@ -15,7 +15,6 @@
 {
     self = [super init];
     if (self) {
-        NSLog(@"dict is %@", dictionary);
         self.eventDate = dictionary[@"event_date"];
         self.amountOwed = dictionary[@"amount_owed"];
         self.status = dictionary[@"status"];

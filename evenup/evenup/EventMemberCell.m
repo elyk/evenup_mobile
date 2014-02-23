@@ -100,7 +100,7 @@
     //    eventItem.title;
     eventPurchasedCount.text = eventMember.purchased_items_count;
     //    eventItem.event_payer
-    eventSpentLabel.text = @"$45.24";
+    eventSpentLabel.text = eventMember.totalPurchase;
     //    eventItem.event_price;
 }
 @end

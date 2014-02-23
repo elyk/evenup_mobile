@@ -24,7 +24,15 @@
         self.event_member_purchased_items = [dictionary objectForKey:@"event_member_purchased_items"];
         
         self.purchased_items_count = [NSString stringWithFormat:@"%i", self.event_member_purchased_items.count];
-
+        int totalPurchasedCount = 0;
+        
+        for (NSDictionary *dict in self.event_member_purchased_items) {
+            int price = [[dict objectForKey:@"cost"] intValue];
+            totalPurchasedCount += price;
+            
+        }
+        
+        self.totalPurchase = [NSString stringWithFormat:@"$%i", totalPurchasedCount];
 
 
     }

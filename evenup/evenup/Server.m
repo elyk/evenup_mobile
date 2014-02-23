@@ -68,7 +68,12 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [target performSelectorInBackground:errorMethod withObject:error];
         }];
-        
+    } else if (request_type==DELETE_REQUEST) {
+        [manager DELETE:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [target performSelectorInBackground:SuccessMethod withObject:responseObject];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [target performSelectorInBackground:errorMethod withObject:error];
+        }];
         
     }
 
