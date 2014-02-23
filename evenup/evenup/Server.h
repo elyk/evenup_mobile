@@ -14,7 +14,8 @@
 #define PUT_REQUEST 4
 
 //#define BASE_URL @"http://obscure-brushlands-4385.herokuapp.com/"
-#define BASE_URL @"http://10.60.20.234:8000/"
+//#define BASE_URL @"http://10.60.20.234:8000/"
+#define BASE_URL @"http://127.0.0.1:8000/"
 
 //LOGIN / SIGNUP 
 

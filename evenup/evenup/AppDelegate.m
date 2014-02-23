@@ -32,11 +32,11 @@
     
     NSString *savedValue = [Server sharedServer].authToken;
     NSLog(@"saved val is %@", savedValue);
-//    if (!savedValue) {
-//        [self bringUserToLogin];
-//    } else {
+    if (!savedValue) {
+        [self bringUserToLogin];
+    } else {
         [self bringUserToHome];
-//    }
+    }
     
 
     

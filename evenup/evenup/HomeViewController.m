@@ -99,7 +99,13 @@
     eventsTable.dataSource = self;
     [self.view addSubview:eventsTable];
 //    [self fetchEvents];
-    [self loadEvents];
+//    [self loadEvents];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fetchEvents];
 }
 
 -(void)fetchEvents
@@ -112,13 +118,15 @@
 -(void)eventsSuccessResponse:(NSObject *)response
 {
     NSLog(@"success response is %@", response);
-    NSMutableArray *array = [response valueForKey:@"response"];
+    NSMutableArray *array = [response valueForKey:@"results"];
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    NSLog(@"array is %@", array);
     for (NSDictionary *dict in array) {
         Event *newEvent = [[Event alloc] initWithDictionary:dict];
-        [array addObject:newEvent];
+        [newArray addObject:newEvent];
     }
     
-    eventsArray = array;
+    eventsArray = newArray;
     [eventsTable reloadData];
     
 }

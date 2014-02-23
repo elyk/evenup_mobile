@@ -28,7 +28,11 @@
 
     NSLog(@"auth token is %@", [self authToken]);
 //    [manager.requestSerializer setAuthorizationHeaderFieldWithToken:[self authToken]];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:[self authToken] password:nil];
+//    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:[self authToken] password:nil];
+    
+    NSString *authString = [NSString stringWithFormat:@"Token %@", [self authToken]];
+    [manager.requestSerializer setValue:authString forHTTPHeaderField:@"AUTHORIZATION"];
+
     
     
     //    incase isn't sent over'
@@ -36,7 +40,7 @@
         params = [[NSMutableDictionary alloc] init];
     }
     
-
+//    [params setObject:[self authToken] forKey:@"token"];
     
     if (request_type==GET_REQUEST) {
         NSLog(@"request header is %@", manager.requestSerializer.HTTPRequestHeaders);

@@ -110,6 +110,7 @@
 -(void)newEventsSuccessResponse:(NSObject *)response
 {
     NSLog(@"response is %@", response);
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }
 
