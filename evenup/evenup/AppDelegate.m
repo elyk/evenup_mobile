@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Server.h"
 #import "IIViewDeckController.h"
 #import "HomeViewController.h"
 #import "SideViewController.h"
@@ -27,10 +28,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
-                           objectForKey:USER_TOKEN_KEY];
+    [[Server sharedServer] LoadAuthToken];
     
-//    if (savedValue == nil) {
+    NSString *savedValue = [Server sharedServer].authToken;
+    NSLog(@"saved val is %@", savedValue);
+//    if (!savedValue) {
 //        [self bringUserToLogin];
 //    } else {
         [self bringUserToHome];

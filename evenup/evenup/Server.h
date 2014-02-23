@@ -31,6 +31,10 @@
 }
 
 +(Server *)sharedServer;
+@property(nonatomic, strong) NSString *authToken;
+-(void)removeAuthTok;
+-(void)LoadAuthToken;
+-(void)setTheAuthToken:(NSString *)authToken;
 -(void) requestOfType:(int)request_type forUrl:(NSString *)url params:(NSMutableDictionary *)params target:(id)target successMethod:(SEL)SuccessMethod errorMethod:(SEL)errorMethod;
 
 -(void) authLoginRequest:(int)request_type forUrl:(NSString *)url params:(NSMutableDictionary *)params target:(id)target successMethod:(SEL)SuccessMethod errorMethod:(SEL)errorMethod;

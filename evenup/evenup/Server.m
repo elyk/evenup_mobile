@@ -25,9 +25,11 @@
     NSString *URL = [NSString stringWithFormat:@"%@%@", BASE_URL, url];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
     NSLog(@"auth token is %@", [self authToken]);
 //    [manager.requestSerializer setAuthorizationHeaderFieldWithToken:[self authToken]];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:[self authToken] password:nil];
+    
     
     //    incase isn't sent over'
     if (params == nil) {
@@ -88,14 +90,33 @@
     }
 }
 
--(NSString *)authToken
+
+-(void)setTheAuthToken:(NSString *)authToken
 {
-    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
-                            stringForKey:USER_TOKEN_KEY];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:authToken forKey:USER_TOKEN_KEY];
+    [defaults synchronize];
+    self.authToken = authToken;
     
-    return savedValue;
+//    [[NSUserDefaults standardUserDefaults]
+//     setObject:authToken forKey:USER_TOKEN_KEY];
+}
+
+-(void)LoadAuthToken
+{
+    self.authToken = [[NSUserDefaults standardUserDefaults] objectForKey:USER_TOKEN_KEY];
+}
+
+-(void)removeAuthTok
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:USER_TOKEN_KEY];
+    [defaults synchronize];
+    self.authToken = nil;
     
 }
+
+
 
 
 @end

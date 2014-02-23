@@ -53,15 +53,15 @@
     [self.view addSubview:formTableView];
     
     logInButton = [[UIButton alloc] initWithFrame:CGRectMake(20, formTableView.frame.size.height+formTableView.frame.origin.y+30, self.view.frame.size.width-40, 20)];
-    [logInButton setTitle:@"Log In" forState:UIControlStateNormal];
-    [logInButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [logInButton setTitle:@"LOG IN" forState:UIControlStateNormal];
+    [logInButton setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [logInButton addTarget:self action:@selector(logUserIn) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:logInButton];
     
     signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-150, self.view.frame.size.width-40, 20)];
     [signUpButton setTitle:@"New User? Sign Up Here." forState:UIControlStateNormal];
-    [signUpButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [signUpButton setTitleColor:[Utils Color3] forState:UIControlStateNormal];
     [signUpButton addTarget:self action:@selector(pushSignUp) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:signUpButton];
@@ -96,9 +96,7 @@
 {
     NSLog(@"success response is %@", response);
     NSString *token = [response valueForKey:@"token"];
-    
-    [[NSUserDefaults standardUserDefaults]
-     setObject:token forKey:USER_TOKEN_KEY];
+    [[Server sharedServer] setTheAuthToken:token];
     
     [self.delegate LoginViewController:self didLogUserIn:YES];
 }

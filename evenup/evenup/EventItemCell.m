@@ -7,7 +7,7 @@
 //
 
 #import "EventItemCell.h"
-
+#import "Utils.h"
 @interface EventItemCell()
 {
     UILabel *itemTitleLabel;
@@ -28,7 +28,7 @@
         // Initialization code
         
         checkBoxLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-20, 0, 20, 20)];
-        checkBoxLabel.backgroundColor = [UIColor colorWithRed:16/255.0f green:111/255.0f blue:0/255.0f alpha:1.0f];
+        checkBoxLabel.backgroundColor = [Utils Color5];
         checkBoxLabel.layer.cornerRadius = 10;
         checkBoxLabel.textColor = [UIColor whiteColor];
         checkBoxLabel.font = [UIFont boldSystemFontOfSize:18.0f];
@@ -39,12 +39,13 @@
         itemTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width/2, 30)];
         itemTitleLabel.font = [UIFont boldSystemFontOfSize:20.0f];
         itemTitleLabel.textAlignment = NSTextAlignmentCenter;
+        itemTitleLabel.textColor = [Utils Color3];
         [self.contentView addSubview:itemTitleLabel];
         
-        eventMembersLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 55, self.frame.size.width/2, 10)];
+        eventMembersLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, self.frame.size.width/2, 10)];
         eventMembersLabel.backgroundColor = [UIColor clearColor];
-        eventMembersLabel.font = [UIFont boldSystemFontOfSize:10.0f];
-        eventMembersLabel.textAlignment = NSTextAlignmentCenter;
+        eventMembersLabel.font = [UIFont boldSystemFontOfSize:8.0f];
+        eventMembersLabel.textAlignment = NSTextAlignmentLeft;
         eventMembersLabel.textColor = [UIColor lightGrayColor];
         [self.contentView addSubview:eventMembersLabel];
         
@@ -59,9 +60,9 @@
 //        [self.contentView addSubview:amountOwed];
         
         eventOwnerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-(self.frame.size.width/4), 20, self.frame.size.width/4, 10)];
-        eventOwnerLabel.font = [UIFont boldSystemFontOfSize:10.0f];
+        eventOwnerLabel.font = [UIFont boldSystemFontOfSize:8.0f];
         eventOwnerLabel.textAlignment = NSTextAlignmentCenter;
-        eventOwnerLabel.textColor = [UIColor darkGrayColor];
+        eventOwnerLabel.textColor = [UIColor lightGrayColor];
         [self.contentView addSubview:eventOwnerLabel];
         
         
@@ -75,7 +76,7 @@
         eventPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-(self.frame.size.width/4), 45, self.frame.size.width/4, 10)];
         eventPriceLabel.font = [UIFont boldSystemFontOfSize:10.0f];
         eventPriceLabel.textAlignment = NSTextAlignmentCenter;
-        eventPriceLabel.textColor = [UIColor colorWithRed:77/255.0f green:138/255.0f blue:0/255.0f alpha:1.0f];
+        eventPriceLabel.textColor = [Utils Color5];
         [self.contentView addSubview:eventPriceLabel];
         
         
@@ -89,7 +90,7 @@
 {
     itemTitleLabel.text = @"Item Name";
 //    eventItem.title;
-    eventMembersLabel.text = [NSString stringWithFormat:@"John, Bill, Mary"];
+    eventMembersLabel.text = [NSString stringWithFormat:@"JOHN, BILL, MARY"];
     eventOwnerLabel.text = [NSString stringWithFormat:@"%@ PAID", @"JOHN"];
 //    eventItem.event_payer
     eventPriceLabel.text = @"$35";

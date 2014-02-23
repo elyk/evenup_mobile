@@ -16,7 +16,6 @@
 
 #import "SideViewController.h"
 #import "BaseNavigationController.h"
-
 #import "HomeViewController.h"
 #import "ProfileViewController.h"
 #import "PaymentViewController.h"
@@ -50,7 +49,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor darkGrayColor];
+    self.view.backgroundColor = [UIColor colorWithRed:58/255.0f green:58/255.0f blue:58/255.0f alpha:1.0f];
     
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, self.view.frame.size.width, 50)];
     nameLabel.textAlignment = NSTextAlignmentLeft;
@@ -64,26 +63,31 @@
     navTable.delegate = self;
     navTable.dataSource = self;
     navTable.backgroundColor = [UIColor clearColor];
-    navTable.separatorColor = [UIColor whiteColor];
+    navTable.separatorColor = [UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.0f];
     
     [self.view addSubview:navTable];
     
     [self setNameLabel:@"Kyle Connors"];
     
     
-    logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-100, self.view.frame.size.width, 100)];
+    logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 100)];
 //    [logOutButton setBackgroundColor:[UIColor whiteColor]];
     logOutButton.titleLabel.textAlignment = NSTextAlignmentLeft;
     [logOutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [logOutButton setTitle:@"LOG OUT" forState:UIControlStateNormal];
     [logOutButton addTarget:self action:@selector(logUserOut) forControlEvents:UIControlEventTouchUpInside];
+    logOutButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     [self.view addSubview:logOutButton];
 }
 
 -(void)logUserOut
 {
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_TOKEN_KEY];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_TOKEN_KEY];
+//    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_TOKEN_KEY];
+    [[Server sharedServer] removeAuthTok];
+    
+
     NSLog(@"log out");
+    [[[UIApplication sharedApplication] delegate] performSelector:@selector(bringUserToLogin)];
 }
 
 

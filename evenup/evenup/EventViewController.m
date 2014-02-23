@@ -15,7 +15,8 @@
 #import "Event.h"
 #import "EventItem.h"
 #import "EventItemCell.h"
-@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate>
+#import "EventMemberCell.h"
+@interface EventViewController () <UITableViewDataSource, UITableViewDelegate,MCSwipeTableViewCellDelegate, AddItemViewDelegate>
 {
     UITableView *eventTable;
     UISegmentedControl *toggleSegment;
@@ -64,23 +65,25 @@
     [self.view addSubview:toggleSegment];
     
     addItem = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
-    [addItem setTitle:@"Add Item +" forState:UIControlStateNormal];
-
+    addItem = [[UIButton alloc] initWithFrame:CGRectMake(20, 55, self.view.frame.size.width-40, 35)];
+    [addItem setTitle:@"ADD ITEM +" forState:UIControlStateNormal];
+    addItem.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     [addItem setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [addItem addTarget:self action:@selector(addItemToEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addItem];
     
-    addMember = [[UIButton alloc] initWithFrame:CGRectMake(20, 45, self.view.frame.size.width-40, 30)];
-    [addMember setTitle:@"Add Member +" forState:UIControlStateNormal];
+    addMember = [[UIButton alloc] initWithFrame:CGRectMake(20, 55, self.view.frame.size.width-40, 35)];
+    [addMember setTitle:@"ADD MEMBER +" forState:UIControlStateNormal];
     [addMember setTitleColor:[Utils Color5] forState:UIControlStateNormal];
     [addMember addTarget:self action:@selector(addMemberToEvent) forControlEvents:UIControlEventTouchUpInside];
+    addMember.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     [addMember setHidden:YES];
+    
     [self.view addSubview:addMember];
     
     
     
-    eventTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, self.view.frame.size.width, self.view.frame.size.height-85) style:UITableViewStylePlain];
+    eventTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 95, self.view.frame.size.width, self.view.frame.size.height-85) style:UITableViewStylePlain];
     eventTable.dataSource = self;
     eventTable.delegate = self;
     
@@ -138,6 +141,7 @@
 
 -(void)showAddView:(AddItemView *)addView
 {
+    addView.delegate = self;
     CGRect currentFrame = addView.frame;
     [self.view addSubview:addView];
     [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -205,6 +209,13 @@
     }
 }
 
+#pragma mark AdditemDelegate
+-(void)AddItemView:(AddItemView *) view didAddItem:(EventItem *)item
+{
+//    TODO -- add item to the array;
+    [self hideAndRemoveAddView:view];
+}
+
 #pragma mark -- Tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -221,66 +232,89 @@
 {
     
     EventItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    BOOL display_items = NO;
     if (cell == nil) {
         cell = [[EventItemCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
     }
-    NSString *cellText = nil;
     
-    if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
-        cellText = [eventItemsArray objectAtIndex:indexPath.row];
-    } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
-        cellText = [eventMembersArray objectAtIndex:indexPath.row];
+    cell = [self ItemCellfromCell:cell];
+    
+    EventMemberCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+    if (cell2 == nil) {
+        cell2 = [[EventMemberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell2"];
+        
     }
     
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor blackColor];
+    [cell2 setMember:nil];
+    
+    if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_ITEMS) {
+//        cellText = [eventItemsArray objectAtIndex:indexPath.row];
+        display_items = YES;
+
+    } else if (toggleSegment.selectedSegmentIndex == EVENT_TOGGLE_MEMBERS) {
+//        cellText = [eventMembersArray objectAtIndex:indexPath.row];
+        display_items = NO;
+        
+    }
+    
+    if (display_items) {
+        return cell;
+    } else {
+        return cell2;
+    }
+
+    return cell;
+}
+
+// EVENT ITEM CELL 
+-(EventItemCell *)ItemCellfromCell:(EventItemCell*) cell{
     [cell setItem:nil];
     
-    
+    cell.backgroundColor = [UIColor clearColor];
     // Configuring the views and colors.
     UILabel *splitItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
     splitItem.text = @"Split Item";
-    splitItem.textColor = [UIColor lightGrayColor];
+    splitItem.textColor = [UIColor darkGrayColor];
     splitItem.font = [UIFont boldSystemFontOfSize:18.0];
-
+    
     UILabel *splittingItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
     splittingItem.text = @"Splitting Item!";
-    splittingItem.textColor = [UIColor darkGrayColor];
+    splittingItem.textColor = [UIColor whiteColor];
     splittingItem.font = [UIFont boldSystemFontOfSize:18.0];
-  
+    
     
     UILabel *NotsplitItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
     NotsplitItem.text = @"Removing Split";
     NotsplitItem.font = [UIFont boldSystemFontOfSize:18.0];
-    NotsplitItem.textColor = [UIColor lightGrayColor];
+    NotsplitItem.textColor = [UIColor darkGrayColor];
     NotsplitItem.textAlignment = NSTextAlignmentRight;
     
     UILabel *NotsplittingItem = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 75)];
     NotsplittingItem.text = @"Removing Split!";
     NotsplittingItem.font = [UIFont boldSystemFontOfSize:18.0];
-    NotsplittingItem.textColor = [UIColor darkGrayColor];
+    NotsplittingItem.textColor = [UIColor whiteColor];
     NotsplittingItem.textAlignment = NSTextAlignmentRight;
     
     
     
     
-
+    
     // Starting to add
     UIColor *greenColor = [UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0];
     
     // ADDED
     UIColor *darkGreenColor = [UIColor colorWithRed:51/255.0f green:147/255.0f blue:0/255.0f alpha:1.0f];
     
-
+    
     UIColor *redColor = [UIColor colorWithRed:252/255.0f green:35/255.0f blue:35/255.0f alpha:1.0f];
     
-
+    
     UIColor *darkRedColor = [UIColor colorWithRed:173/255.0f green:24/255.0f blue:24/255.0f alpha:1.0f];
     
     // Setting the default inactive state color to the tableView background color.
-//    [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
+    //    [cell setDefaultColor:self.tableView.backgroundView.backgroundColor];
     
-
+    
     
     // Adding gestures per state basis.
     [cell setSwipeGestureWithView:splitItem color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
@@ -312,7 +346,7 @@
         
         
     }];
-
+    
     
     
     
@@ -320,8 +354,8 @@
     cell.firstTrigger = 0.2;
     cell.secondTrigger = 0.7;
     return cell;
+    
 }
-
 
 #pragma mark -- Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

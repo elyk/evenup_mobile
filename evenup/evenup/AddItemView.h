@@ -7,13 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventItem.h"
+@protocol AddItemViewDelegate;
+
+
+
 
 @interface AddItemView : UIView
 {
     
 }
+@property (nonatomic, weak) id<AddItemViewDelegate> delegate;
 
 @property (nonatomic, strong) UITableView *formTable;
 @property BOOL is_displayed;
 -(void)adjustFrame:(CGRect)frame;
+@end
+
+@protocol AddItemViewDelegate <NSObject>
+
+-(void)AddItemView:(AddItemView *) view didAddItem:(EventItem *)item;
 @end

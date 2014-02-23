@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27D5ECAB18BA05D3009C9787 /* EventMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5ECAA18BA05D3009C9787 /* EventMemberCell.m */; };
+		27D5ECAE18BA05E6009C9787 /* EventMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5ECAD18BA05E6009C9787 /* EventMember.m */; };
 		27EB2A8218B8160200C2D851 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8118B8160200C2D851 /* Foundation.framework */; };
 		27EB2A8418B8160200C2D851 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8318B8160200C2D851 /* CoreGraphics.framework */; };
 		27EB2A8618B8160200C2D851 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2A8518B8160200C2D851 /* UIKit.framework */; };
@@ -136,6 +138,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27D5ECA918BA05D2009C9787 /* EventMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMemberCell.h; sourceTree = "<group>"; };
+		27D5ECAA18BA05D3009C9787 /* EventMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMemberCell.m; sourceTree = "<group>"; };
+		27D5ECAC18BA05E6009C9787 /* EventMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMember.h; sourceTree = "<group>"; };
+		27D5ECAD18BA05E6009C9787 /* EventMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMember.m; sourceTree = "<group>"; };
 		27EB2A7E18B8160200C2D851 /* evenup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = evenup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EB2A8118B8160200C2D851 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EB2A8318B8160200C2D851 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -526,6 +532,8 @@
 			children = (
 				27EB2D3218B9876C00C2D851 /* EventItemCell.h */,
 				27EB2D3318B9876C00C2D851 /* EventItemCell.m */,
+				27D5ECA918BA05D2009C9787 /* EventMemberCell.h */,
+				27D5ECAA18BA05D3009C9787 /* EventMemberCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -539,6 +547,8 @@
 				27EB2AD818B8263D00C2D851 /* Event.m */,
 				27EB2D3518B9881E00C2D851 /* EventItem.h */,
 				27EB2D3618B9881E00C2D851 /* EventItem.m */,
+				27D5ECAC18BA05E6009C9787 /* EventMember.h */,
+				27D5ECAD18BA05E6009C9787 /* EventMember.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -988,6 +998,7 @@
 				27EB2C6118B890D200C2D851 /* PKCardCVC.m in Sources */,
 				27EB2C5918B890D100C2D851 /* STPToken.m in Sources */,
 				27EB2CA218B9391C00C2D851 /* MainEventCell.m in Sources */,
+				27D5ECAB18BA05D3009C9787 /* EventMemberCell.m in Sources */,
 				27EB2AB518B8166600C2D851 /* BaseViewController.m in Sources */,
 				27EB2AC318B8171B00C2D851 /* IIWrapController.m in Sources */,
 				27EB2B0E18B863C400C2D851 /* AddItemView.m in Sources */,
@@ -1038,6 +1049,7 @@
 				27EB2D3B18B9D24C00C2D851 /* MCSwipeTableViewCell.m in Sources */,
 				27EB2AD118B81EA700C2D851 /* SignUpViewController.m in Sources */,
 				27EB2C6618B890D200C2D851 /* PKUSAddressZip.m in Sources */,
+				27D5ECAE18BA05E6009C9787 /* EventMember.m in Sources */,
 				27EB2AC218B8171B00C2D851 /* IIViewDeckController.m in Sources */,
 				27EB2AF918B8431B00C2D851 /* PaymentViewController.m in Sources */,
 				27EB2C6718B890D200C2D851 /* PKView.m in Sources */,

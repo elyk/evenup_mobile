@@ -10,7 +10,7 @@
 #define EVENT_STATUS_CLOSED @"CLOSED"
 
 #import "MainEventCell.h"
-
+#import "Utils.h"
 @interface MainEventCell ()
 {
     UILabel *eventTitleLabel;
@@ -32,6 +32,7 @@
         eventTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.frame.size.width/2, 30)];
         eventTitleLabel.font = [UIFont boldSystemFontOfSize:24.0f];
         eventTitleLabel.textAlignment = NSTextAlignmentCenter;
+        eventTitleLabel.textColor = [Utils Color4];
         [self.contentView addSubview:eventTitleLabel];
         
         
