@@ -119,6 +119,7 @@
 		27EB2D2B18B95A5800C2D851 /* THContactBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1D18B95A5800C2D851 /* THContactBubble.m */; };
 		27EB2D2C18B95A5800C2D851 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */; };
 		27EB2D2D18B95A5800C2D851 /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */; };
+		27EB2D3018B977A300C2D851 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB2D2F18B977A300C2D851 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +317,7 @@
 		27EB2D1F18B95A5800C2D851 /* THContactPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerView.m; sourceTree = "<group>"; };
 		27EB2D2018B95A5800C2D851 /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
 		27EB2D2118B95A5800C2D851 /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
+		27EB2D2F18B977A300C2D851 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EB2D3018B977A300C2D851 /* MessageUI.framework in Frameworks */,
 				27EB2CCD18B94E4600C2D851 /* AddressBook.framework in Frameworks */,
 				27EB2CCE18B94E4600C2D851 /* AddressBookUI.framework in Frameworks */,
 				27EB2B6718B88FBE00C2D851 /* QuartzCore.framework in Frameworks */,
@@ -367,6 +370,7 @@
 		27EB2A8018B8160200C2D851 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27EB2D2F18B977A300C2D851 /* MessageUI.framework */,
 				27EB2CCB18B94E4600C2D851 /* AddressBook.framework */,
 				27EB2CCC18B94E4600C2D851 /* AddressBookUI.framework */,
 				27EB2C9718B8913E00C2D851 /* SenTestingKit.framework */,
@@ -517,9 +521,9 @@
 		27EB2AD618B825CB00C2D851 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				27EB2AD718B8263D00C2D851 /* Event.h */,
 				27EB2CDB18B9574400C2D851 /* ContactsData.h */,
 				27EB2CDC18B9574400C2D851 /* ContactsData.m */,
+				27EB2AD718B8263D00C2D851 /* Event.h */,
 				27EB2AD818B8263D00C2D851 /* Event.m */,
 			);
 			name = Models;

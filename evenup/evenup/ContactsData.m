@@ -13,17 +13,23 @@
 
 -(void)setEmails:(NSMutableArray *)emails
 {
-    NSLog(@"emails are %@", emails);
+    if (emails) {
+        self.emailAddresses = emails;
+    }
+
 }
 
 -(void)setNumbers:(NSMutableArray *)numbers
 {
-    NSLog(@"numbers are %@", numbers);
+    if (numbers) {
+        self.phoneNumbers = numbers;
+    }
+
 }
 
--(NSString *)fullName
-{
-    return [NSString stringWithFormat:@"%@ %@", self.firstNames, self.lastNames];
-}
+//-(NSString *)fullName
+//{
+//    return [NSString stringWithFormat:@"%@ %@", self.firstNames, self.lastNames];
+//}
 
 @end

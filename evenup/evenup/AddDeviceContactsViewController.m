@@ -34,17 +34,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleBordered target:self action:@selector(removeAllContacts:)];
-    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithTitle:@"Remove All" style:UIBarButtonItemStylePlain target:self action:@selector(removeAllContacts:)];
+    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(finishedAddingContacts)];
     self.navigationItem.rightBarButtonItem = barButton;
     
     // Initialize and add Contact Picker View
     self.contactPickerView = [[THContactPickerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     self.contactPickerView.delegate = self;
-    [self.contactPickerView setPlaceholderString:@"Select Contacts"];
+    [self.contactPickerView setPlaceholderString:@"Add Members..."];
     [self.view addSubview:self.contactPickerView];
     
     // Fill the rest of the view with the table view
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.contactPickerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.contactPickerView.frame.size.height - kKeyboardHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.contactPickerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.contactPickerView.frame.size.height) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view insertSubview:self.tableView belowSubview:self.contactPickerView];
@@ -141,7 +141,7 @@
     if ([textViewText isEqualToString:@""]){
         self.filteredContacts = self.contacts;
     } else {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[cd] %@", textViewText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fullName contains[cd] %@", textViewText];
         self.filteredContacts = [self.contacts filteredArrayUsingPredicate:predicate];
     }
     [self.tableView reloadData];
@@ -165,6 +165,13 @@
     [self.selectedContacts removeAllObjects];
     self.filteredContacts = self.contacts;
     [self.tableView reloadData];
+}
+
+-(void)finishedAddingContacts
+{
+
+    [self.delegate AddDeviceViewController:self selectedContacts:self.selectedContacts];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

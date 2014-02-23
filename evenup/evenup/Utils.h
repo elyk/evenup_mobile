@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface Utils : NSObject
-
+{
+    
+}
++(NSArray *)getAllContacts;
 @end

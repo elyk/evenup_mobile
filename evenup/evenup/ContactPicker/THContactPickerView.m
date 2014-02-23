@@ -76,7 +76,7 @@
     self.textView.scrollsToTop = NO;
     self.textView.clipsToBounds = NO;
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
-    [self.textView becomeFirstResponder];
+//    [self.textView becomeFirstResponder];
     
     // Add shadow to bottom border
     self.backgroundColor = [UIColor whiteColor];
@@ -87,9 +87,10 @@
     [layer setShadowRadius:1.0f];
     
     // Add placeholder label
-    self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, self.viewPadding, self.frame.size.width, self.lineHeight)];
-    self.placeholderLabel.font = contactBubble.label.font;
-    self.placeholderLabel.textColor = [UIColor grayColor];
+    self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, self.viewPadding, self.frame.size.width, self.lineHeight)];
+    self.placeholderLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    self.placeholderLabel.textColor = [UIColor lightGrayColor];
+    
     self.placeholderLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.placeholderLabel];
     

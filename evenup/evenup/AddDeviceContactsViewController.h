@@ -8,8 +8,13 @@
 
 #import "BaseViewController.h"
 #import "THContactPickerView.h"
-@interface AddDeviceContactsViewController : BaseViewController <
-UITableViewDataSource, UITableViewDelegate, THContactPickerDelegate>
+@protocol AddDeviceContactsViewControllerDelegate;
+
+
+@interface AddDeviceContactsViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, THContactPickerDelegate>
+
+
+@property (nonatomic, weak) id<AddDeviceContactsViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) THContactPickerView *contactPickerView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -18,4 +23,10 @@ UITableViewDataSource, UITableViewDelegate, THContactPickerDelegate>
 @property (nonatomic, strong) NSArray *filteredContacts;
 
 -(id)initWithContacts:(NSArray *)contacts;
+@end
+
+@protocol AddDeviceContactsViewControllerDelegate <NSObject>
+
+-(void)AddDeviceViewController:(AddDeviceContactsViewController *) viewController selectedContacts:(NSMutableArray *)contacts;
+
 @end
